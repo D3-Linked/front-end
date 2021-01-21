@@ -1,0 +1,15 @@
+<h1>Bewerk rol {{rol.naam}}</h1>
+<mat-card id="card">
+    <mat-card-content>
+        <form [formGroup]="editRolForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field [style.width.px]=700>
+                    <mat-label>Naam</mat-label>
+                    <input matInput type="text" formControlName="naam" [(ngModel)]="rol.naam"/>
+                </mat-form-field>
+            </div>
+
+            <button class="button" mat-raised-button color="primary" type="submit">Bewerk rol</button>
+        </form>
+    </mat-card-content>
+</mat-card>

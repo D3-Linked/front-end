@@ -1,0 +1,36 @@
+<h1>Voeg gebruiker toe</h1>
+<mat-card id="card">
+  <mat-card-content>
+    <form [formGroup]="addGebruikerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Naam</mat-label>
+          <input matInput type="text" formControlName="naam" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="email" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Paswoord</mat-label>
+          <input matInput type="password" formControlName="paswoord" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Rol</mat-label>
+          <mat-select [(ngModel)]="selectedRol" formControlName="roleID">
+            <mat-option *ngFor="let rol of rollen" [value]="rol.roleID">
+              {{rol.naam}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button class="button" mat-raised-button color="primary" type="submit">Voeg gebruiker toe</button>
+    </form>
+  </mat-card-content>
+</mat-card>

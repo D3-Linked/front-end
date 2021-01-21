@@ -1,12 +1,12 @@
-<h1>Bedrijven</h1>
+<h1>Producten</h1>
 <div class="tableField">
   <mat-card id="card">
     <mat-form-field>
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Bedrijf" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Product" #input>
     </mat-form-field>
 
-    <div><button class="addButton" (click)="addBedrijf()" mat-raised-button color="accent">VOEG TOE</button></div>
+    <div><button class="addButton" (click)="addProduct()" mat-raised-button color="accent">VOEG TOE</button></div>
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
@@ -17,12 +17,18 @@
           <td mat-cell *matCellDef="let row"> {{row.naam}} </td>
         </ng-container>
 
-        <!-- Delete bedrijf Column -->
-        <ng-container matColumnDef="deleteBedrijf">
+        <!-- Levering Column -->
+        <ng-container matColumnDef="levering">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Levering </th>
+          <td mat-cell *matCellDef="let row"> Opmerking: {{row.levering.omschrijving}} van bedrijf {{row.levering.leverancier.bedrijf.naam}} </td>
+        </ng-container>
+
+        <!-- Delete levering Column -->
+        <ng-container matColumnDef="deleteProduct">
           <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-          <td mat-cell *matCellDef="let row"> <button (click)="editBedrijf(row.bedrijfID)" class="EditButton" mat-raised-button
+          <td mat-cell *matCellDef="let row"> <button (click)="editProduct(row.productID)" class="EditButton" mat-raised-button
               color="primary">BEWERK</button>
-              <button (click)="deleteBedrijf(row.bedrijfID)" mat-raised-button
+              <button (click)="deleteProduct(row.productID)" mat-raised-button
               color="accent">VERWIJDER</button> </td>
         </ng-container>
 
@@ -31,7 +37,7 @@
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">Geen bedrijven gevonden met de filter "{{input.value}}"</td>
+          <td class="mat-cell" colspan="4">Geen producten gevonden met de filter "{{input.value}}"</td>
         </tr>
       </table>
 

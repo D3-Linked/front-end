@@ -1,0 +1,14 @@
+<h1>Voeg rol toe</h1>
+<mat-card id="card">
+    <mat-card-content>
+        <form [formGroup]="addRolForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field [style.width.px]=700>
+                    <mat-label>Naam</mat-label>
+                    <input matInput type="text" formControlName="naam" />
+                </mat-form-field>
+            </div>
+            <button class="button" mat-raised-button color="primary" type="submit">Voeg rol toe</button>
+        </form>
+    </mat-card-content>
+</mat-card>
