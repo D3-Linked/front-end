@@ -26,4 +26,4 @@ steps:
     azureSubscription: 'Azure for Students (91a72b16-fa03-4405-8bd1-38824f717183)'
     appType: 'webApp'
     WebAppName: 'linked'
-    packageForLinux: 'dist\application-frontend'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/front-end/dist'
