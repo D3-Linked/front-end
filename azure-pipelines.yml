@@ -11,6 +11,7 @@ pool:
 
 steps:
 - task: NodeTool@0
+
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
@@ -20,6 +21,11 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'dist\deploy'
+    ArtifactName: 'dist'
+    publishLocation: 'Container'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
