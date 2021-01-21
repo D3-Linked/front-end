@@ -20,3 +20,10 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students (91a72b16-fa03-4405-8bd1-38824f717183)'
+    appType: 'webApp'
+    WebAppName: 'linked'
+    packageForLinux: 'dist\application-frontend'
