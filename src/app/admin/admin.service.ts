@@ -22,169 +22,169 @@ export class AdminService {
 
   //BEDRIJVEN
   getBedrijven(): Observable<Bedrijf[]> {
-    return this.http.get<Bedrijf[]>(this.baseUrl + "/bedrijven/");
+    return this.http.get<Bedrijf[]>(this.baseUrl + "bedrijven/");
   }
 
   addBedrijf(newBedrijf: Bedrijf): Observable<Bedrijf> {
-    return this.http.post<Bedrijf>(this.baseUrl + "/bedrijven/", newBedrijf);
+    return this.http.post<Bedrijf>(this.baseUrl + "bedrijven/", newBedrijf);
   }
 
   deleteBedrijf(bedrijfID: number): Observable<Bedrijf> {
-    return this.http.delete<Bedrijf>(this.baseUrl + "/bedrijven/" + bedrijfID);
+    return this.http.delete<Bedrijf>(this.baseUrl + "bedrijven/" + bedrijfID);
   }
 
   getBedrijfById(id:number): Observable<Bedrijf>{
-    return this.http.get<Bedrijf>(this.baseUrl + "/bedrijven/" + id);
+    return this.http.get<Bedrijf>(this.baseUrl + "bedrijven/" + id);
   }
 
   updateBedrijf(bedrijfID: number, bedrijf: Bedrijf): Observable<Bedrijf> {
-    return this.http.put<Bedrijf>(this.baseUrl + "/bedrijven/" + bedrijfID, bedrijf);
+    return this.http.put<Bedrijf>(this.baseUrl + "bedrijven/" + bedrijfID, bedrijf);
   }
 
   //LAADKADES
   getLaadkades(): Observable<Laadkade[]> {
-    return this.http.get<Laadkade[]>(this.baseUrl + "/laadkades");
+    return this.http.get<Laadkade[]>(this.baseUrl + "laadkades");
   }
 
   addLaadkade(newLaadkade: Laadkade): Observable<Laadkade> {
-    return this.http.post<Laadkade>(this.baseUrl + "/laadkades/", newLaadkade);
+    return this.http.post<Laadkade>(this.baseUrl + "laadkades/", newLaadkade);
   }
 
   deleteLaadkade(laadkadeID: number): Observable<Laadkade> {
-    return this.http.delete<Laadkade>(this.baseUrl + "/laadkades/" + laadkadeID);
+    return this.http.delete<Laadkade>(this.baseUrl + "laadkades/" + laadkadeID);
   }
 
   getLaadkadeById(id:number): Observable<Laadkade>{
-    return this.http.get<Laadkade>(this.baseUrl + "/laadkades/" + id);
+    return this.http.get<Laadkade>(this.baseUrl + "laadkades/" + id);
   }
 
   updateLaadkade(laadkadeID: number, laadkade: Laadkade): Observable<Laadkade> {
-    return this.http.put<Laadkade>(this.baseUrl + "/laadkades/" + laadkadeID, laadkade);
+    return this.http.put<Laadkade>(this.baseUrl + "laadkades/" + laadkadeID, laadkade);
   }
 
   //LEVERANCIERS
   getLeveranciers(): Observable<Leverancier[]> {
-    return this.http.get<Leverancier[]>(this.baseUrl + "/leveranciers");
+    return this.http.get<Leverancier[]>(this.baseUrl + "leveranciers");
   }
 
   addLeverancier(newLeverancier: Leverancier): Observable<Leverancier> {
-    return this.http.post<Leverancier>(this.baseUrl + "/leveranciers/", newLeverancier);
+    return this.http.post<Leverancier>(this.baseUrl + "leveranciers/", newLeverancier);
   }
 
   deleteLeverancier(leverancierID: number): Observable<Leverancier> {
-    return this.http.delete<Leverancier>(this.baseUrl + "/leveranciers/" + leverancierID);
+    return this.http.delete<Leverancier>(this.baseUrl + "leveranciers/" + leverancierID);
   }
 
   getLeverancierById(id:number): Observable<Leverancier>{
-    return this.http.get<Leverancier>(this.baseUrl + "/leveranciers/" + id);
+    return this.http.get<Leverancier>(this.baseUrl + "leveranciers/" + id);
   }
 
   updateLeverancier(leverancierID: number, leverancier: Leverancier): Observable<Leverancier> {
-    return this.http.put<Leverancier>(this.baseUrl + "/leveranciers/" + leverancierID, leverancier);
+    return this.http.put<Leverancier>(this.baseUrl + "leveranciers/" + leverancierID, leverancier);
   }
 
   //LEVERINGEN
   getLeveringen(): Observable<Levering[]> {
-    return this.http.get<Levering[]>(this.baseUrl + "/leveringen");
+    return this.http.get<Levering[]>(this.baseUrl + "leveringen");
   }
-  
+
   addLevering(newLevering: Levering): Observable<Levering> {
-    return this.http.post<Levering>(this.baseUrl + "/leveringen/", newLevering);
+    return this.http.post<Levering>(this.baseUrl + "leveringen/", newLevering);
   }
 
   deleteLevering(leveringID: number): Observable<Levering> {
-    return this.http.delete<Levering>(this.baseUrl + "/leveringen/" + leveringID);
+    return this.http.delete<Levering>(this.baseUrl + "leveringen/" + leveringID);
   }
 
   getLeveringById(id:number): Observable<Levering>{
-    return this.http.get<Levering>(this.baseUrl + "/leveringen/" + id);
+    return this.http.get<Levering>(this.baseUrl + "leveringen/" + id);
   }
 
   updateLevering(leveringID: number, levering: Levering): Observable<Levering> {
-    return this.http.put<Levering>(this.baseUrl + "/leveringen/" + leveringID, levering);
+    return this.http.put<Levering>(this.baseUrl + "leveringen/" + leveringID, levering);
   }
 
   //PRODUCTEN
   getProducten(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl + "/producten");
+    return this.http.get<Product[]>(this.baseUrl + "producten");
   }
 
   addProduct(newProduct: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl + "/producten/", newProduct);
+    return this.http.post<Product>(this.baseUrl + "producten/", newProduct);
   }
 
   deleteProduct(productID: number): Observable<Product> {
-    return this.http.delete<Product>(this.baseUrl + "/producten/" + productID);
+    return this.http.delete<Product>(this.baseUrl + "producten/" + productID);
   }
 
   getProductById(id:number): Observable<Product>{
-    return this.http.get<Product>(this.baseUrl + "/producten/" + id);
+    return this.http.get<Product>(this.baseUrl + "producten/" + id);
   }
 
   updateProduct(productID: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(this.baseUrl + "/producten/" + productID, product);
+    return this.http.put<Product>(this.baseUrl + "producten/" + productID, product);
   }
 
   //ROLES
   getRoles(): Observable<Role[]> {
-    return this.http.get<Role[]>(this.baseUrl + "/roles");
+    return this.http.get<Role[]>(this.baseUrl + "roles");
   }
-  
+
   addRole(newRole: Role): Observable<Role> {
-    return this.http.post<Role>(this.baseUrl + "/roles/", newRole);
+    return this.http.post<Role>(this.baseUrl + "roles/", newRole);
   }
 
   deleteRole(roleID: number): Observable<Role> {
-    return this.http.delete<Role>(this.baseUrl + "/roles/" + roleID);
+    return this.http.delete<Role>(this.baseUrl + "roles/" + roleID);
   }
 
   getRoleById(id:number): Observable<Role>{
-    return this.http.get<Role>(this.baseUrl + "/roles/" + id);
+    return this.http.get<Role>(this.baseUrl + "roles/" + id);
   }
 
   updateRole(roleID: number, role: Role): Observable<Role> {
-    return this.http.put<Role>(this.baseUrl + "/roles/" + roleID, role);
+    return this.http.put<Role>(this.baseUrl + "roles/" + roleID, role);
   }
 
   //SCHEDULES
   getSchedules(): Observable<Schedule[]> {
-    return this.http.get<Schedule[]>(this.baseUrl + "/schedules");
+    return this.http.get<Schedule[]>(this.baseUrl + "schedules");
   }
-    
+
   addSchedule(newSchedule: Schedule): Observable<Schedule> {
-    return this.http.post<Schedule>(this.baseUrl + "/schedules/", newSchedule);
+    return this.http.post<Schedule>(this.baseUrl + "schedules/", newSchedule);
   }
 
   deleteSchedule(scheduleID: number): Observable<Schedule> {
-    return this.http.delete<Schedule>(this.baseUrl + "/schedules/" + scheduleID);
+    return this.http.delete<Schedule>(this.baseUrl + "schedules/" + scheduleID);
   }
 
   getScheduleById(id:number): Observable<Schedule>{
-    return this.http.get<Schedule>(this.baseUrl + "/schedules/" + id);
+    return this.http.get<Schedule>(this.baseUrl + "schedules/" + id);
   }
 
   updateSchedule(scheduleID: number, schedule: Schedule): Observable<Schedule> {
-    return this.http.put<Schedule>(this.baseUrl + "/schedules/" + scheduleID, schedule);
+    return this.http.put<Schedule>(this.baseUrl + "schedules/" + scheduleID, schedule);
   }
 
   //USERS
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + "/users");
+    return this.http.get<User[]>(this.baseUrl + "users");
   }
-      
+
   addUser(newUser: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl + "/users/", newUser);
+    return this.http.post<User>(this.baseUrl + "users/", newUser);
   }
 
   deleteUser(userID: number): Observable<User> {
-    return this.http.delete<User>(this.baseUrl + "/users/" + userID);
+    return this.http.delete<User>(this.baseUrl + "users/" + userID);
   }
 
   getUserById(id:number): Observable<User>{
-    return this.http.get<User>(this.baseUrl + "/users/" + id);
+    return this.http.get<User>(this.baseUrl + "users/" + id);
   }
 
   updateUser(userID: number, user: User): Observable<User> {
-    return this.http.put<User>(this.baseUrl + "/users/" + userID, user);
+    return this.http.put<User>(this.baseUrl + "users/" + userID, user);
   }
 }

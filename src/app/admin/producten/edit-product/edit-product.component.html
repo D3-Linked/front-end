@@ -1,0 +1,24 @@
+<h1>Bewerk product {{product.naam}}</h1>
+<mat-card id="card">
+  <mat-card-content>
+    <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Naam</mat-label>
+          <input matInput type="text" formControlName="naam" [(ngModel)]="product.naam" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Levering</mat-label>
+          <mat-select [(ngModel)]="product.leveringID" formControlName="leveringID">
+            <mat-option *ngFor="let levering of leveringen" [value]="levering.leveringID">
+              Opmerking: {{levering.omschrijving}} van bedrijf {{levering.leverancier.bedrijf.naam}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button class="button" mat-raised-button color="primary" type="submit">Bewerk product</button>
+    </form>
+  </mat-card-content>
+</mat-card>
