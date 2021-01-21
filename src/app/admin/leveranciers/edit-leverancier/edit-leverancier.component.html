@@ -1,0 +1,24 @@
+<h1>Bewerk leverancier {{leverancier.code}}</h1>
+<mat-card id="card">
+    <mat-card-content>
+        <form [formGroup]="editLeverancierForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field [style.width.px]=700>
+                    <mat-label>Code</mat-label>
+                    <input matInput type="text" formControlName="code" [(ngModel)]="leverancier.code"/>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field [style.width.px]=700>
+                    <mat-label>Bedrijf</mat-label>
+                    <mat-select [(ngModel)]="leverancier.bedrijfID" formControlName="bedrijfID">
+                        <mat-option *ngFor="let bedrijf of bedrijven" [value]="bedrijf.bedrijfID">
+                          {{bedrijf.naam}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button class="button" mat-raised-button color="primary" type="submit">Bewerk leverancier</button>
+        </form>
+    </mat-card-content>
+</mat-card>

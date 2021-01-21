@@ -1,0 +1,24 @@
+Button {
+    width: 200px;
+    margin: 25px auto;
+}
+
+mat-card-header,
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.navCard{
+    width: 25%;
+    float: left;
+    margin: 25px;
+}
+
+#cardDiv{
+    width: 75%;
+    min-width: 510px;
+    margin: 100px auto;
+    height: 50%;
+}
