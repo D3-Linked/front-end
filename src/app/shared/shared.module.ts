@@ -15,6 +15,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [],
@@ -31,7 +34,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatPaginatorModule,
     MatIconModule,
     MatToolbarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -45,7 +50,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatPaginatorModule,
     MatIconModule,
     MatToolbarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }
