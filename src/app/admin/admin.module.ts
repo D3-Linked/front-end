@@ -33,6 +33,10 @@ import { UsersComponent } from './users/users/users.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 
+import { SchedulesComponent } from './schedules/schedules/schedules.component';
+import { AddScheduleComponent } from './schedules/add-schedule/add-schedule.component';
+import { EditScheduleComponent } from './schedules/edit-schedule/edit-schedule.component';
+
 const appRoutes: Routes = [
   { path: 'bedrijven', component: BedrijvenComponent },
   { path: 'addBedrijf', component: AddBedrijfComponent },
@@ -55,10 +59,13 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'addGebruiker', component: AddUserComponent },
   { path: 'editGebruiker', component: EditUserComponent },
+  { path: 'schedules', component: SchedulesComponent },
+  { path: 'addSchedule', component: AddScheduleComponent },
+  { path: 'editSchedule', component: EditScheduleComponent },
 ];
 
 @NgModule({
-  declarations: [AdminComponent, BedrijvenComponent, AddBedrijfComponent, EditBedrijfComponent, LaadkadesComponent, AddLaadkadeComponent, EditLaadkadeComponent, LeveranciersComponent, AddLeverancierComponent, EditLEverancierComponent, LeveringenComponent, AddLeveringComponent, EditLeveringComponent, ProductenComponent, AddProductComponent, EditProductComponent, RollenComponent, AddRolComponent, EditRolComponent, UsersComponent, AddUserComponent, EditUserComponent],
+  declarations: [AdminComponent, BedrijvenComponent, AddBedrijfComponent, EditBedrijfComponent, LaadkadesComponent, AddLaadkadeComponent, EditLaadkadeComponent, LeveranciersComponent, AddLeverancierComponent, EditLEverancierComponent, LeveringenComponent, AddLeveringComponent, EditLeveringComponent, ProductenComponent, AddProductComponent, EditProductComponent, RollenComponent, AddRolComponent, EditRolComponent, UsersComponent, AddUserComponent, EditUserComponent, SchedulesComponent, AddScheduleComponent, EditScheduleComponent],
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),

@@ -1,0 +1,28 @@
+<h1>Voeg schedule toe</h1>
+<mat-card id="card">
+  <mat-card-content>
+    <form [formGroup]="addScheduleForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Code</mat-label>
+          <input matInput type="text" formControlName="code" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [style.width.px]=700 appearance="fill">
+          <mat-label>Kies een datum</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="datum" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Opmerking</mat-label>
+          <input matInput type="text" formControlName="opmerking" />
+        </mat-form-field>
+      </div>
+      <button class="button" mat-raised-button color="primary" type="submit">Voeg schedule toe</button>
+    </form>
+  </mat-card-content>
+</mat-card>

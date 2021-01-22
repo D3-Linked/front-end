@@ -100,6 +100,10 @@ export class AdminService {
     return this.http.get<Levering>(this.baseUrl + "leveringen/" + id);
   }
 
+  getLeveringenByScheduleId(id:number): Observable<Levering[]>{
+    return this.http.get<Levering[]>(this.baseUrl + "leveringen/schedule/" + id);
+  }
+
   updateLevering(leveringID: number, levering: Levering): Observable<Levering> {
     return this.http.put<Levering>(this.baseUrl + "leveringen/" + leveringID, levering);
   }
