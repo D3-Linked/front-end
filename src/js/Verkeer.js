@@ -27,7 +27,7 @@ async function connect() {
         //check if user is authenticated; if not, redirect to login page
 		if(response.status===401){
             const url = new URL(`${urlQlikServer}/login`);
-            url.searchParams.append('returnto', 'https://linked.azurewebsites.net');
+            url.searchParams.append('returnto', 'https://localhost:4200');
             url.searchParams.append('qlik-web-integration-id', webIntegrationId);
             window.location.href = url;
         }
@@ -77,6 +77,8 @@ require( ["js/qlik"], function ( qlik ) {
     app.getObject('actievelk', 'rhdp');
     //belgie teggen over de rest
     app.getObject('filter', 'mmRtMM');
+
+    app.getObject('reload', 'mGTxmZQ');
 
 	$("#ClearAll").click(function() {
 	app.clearAll();
