@@ -1,8 +1,3 @@
-.container{
-	margin: auto;
-	width: 80%;
-}
-
 .flex-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -11,11 +6,13 @@
 
 .qvplaceholder, .qvobject {
 	flex: 1 1 auto;
-	height: 400px;
+	height: 300px;
 	min-width: 400px;
 	margin: 45px 0 0 45px;
 }
-
+#lkbedrijf {
+	max-width: 200px;
+}
 #popup {
 	background-color: #c3534b;
 	color: #FFFFFF;
@@ -54,69 +51,3 @@
 #popupText {
 	margin-right: 23px;
 }
-
-.a{
-	height: 100px;
-	min-width: 100px;
-	margin: 45px 0 0 45px;
-	row-span: inherit;
-	flex: 1 1 auto;
-	padding-bottom: 25px;
-}
-
-.e{
-	height: 100px;
-	min-width: 200px;
-}
-
-.naastelkaar {
-	display: flex;
-}
-
-.qvplaceholder2, .qvobject2 {
-
-	height: 400px;
-	min-width: 50px;
-	margin: 45px 0 0 45px;
-	padding:50px;
-}
-
-.wereld {
-	padding: 50px;
-}
-
-.center, h1,h2 ,p{
-	text-align: center;
-}
-
-h1,h2 ,p{
-	color: black;
-}
-
-h1{
-	padding-top: 25px;
-	padding-bottom: 25px;
-	font-size: 50px;
-}
-
-h2{
-	font-size: 40px;
-}
-p{
-	font-size: 25px;
-}
-
-button {
-	background-color: #555555;
-	font-size: 24px;
-	border-radius: 4px;
-	color: #FFFFFF;
-}
-
-button:hover {
-	 background-color: #424242;
-	 font-size: 24px;
-	 border-radius: 4px;
-	 color: #FFFFFF;
- }
-

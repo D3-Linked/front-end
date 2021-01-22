@@ -9,7 +9,6 @@
 
 connect();
 
-console.log("boink");
 async function connect() {
     const urlQlikServer = "https://r0737681.eu.qlikcloud.com";
     const urlLoggedIn = "/api/v1/audits";//Use GET request to see if you are authenticated
@@ -63,7 +62,7 @@ require( ["js/qlik"], function ( qlik ) {
 	} );
 
 	//open apps -- inserted here --
-	var app = qlik.openApp("a323a744-6fae-4047-8855-3d06f479f313", config1);
+	var app = qlik.openApp("6130a3fe-31d1-4991-be09-2c74dced71f8", config1);
 	//grafiek besmetingen/dooden in een land
 	app.getObject('vooruitgang', 'RLsbpZ');
     //grafiek hoeveel ziekenhuis bedden per 1.000.000 inwooners
