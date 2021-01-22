@@ -31,6 +31,7 @@
               "src/styles.scss"
             ],
             "scripts": [
+              "src/js/Verkeer.js"
             ]
           },
           "configurations": {
