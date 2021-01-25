@@ -80,8 +80,13 @@ mat-card-content {
   text-align: center;
 }
 
+.EditButton:first-child{
+  margin-left: 0px;
+}
+
 .EditButton{
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 table {
@@ -129,4 +134,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 mat-form-field{
   width: 85%;
+}
+
+.addProductButton{
+  margin-top: 15px;
 }

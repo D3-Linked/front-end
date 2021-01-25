@@ -48,7 +48,7 @@
           <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
             <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <h2>Leveringen voor {{element.datum |date:'dd/MM/yyyy'}} <button (click)="addLevering(element.scheduleID)"
-                  mat-raised-button color="accent">VOEG TOE</button></h2>
+                  mat-raised-button color="accent">VOEG LEVERING TOE</button></h2>
               <div *ngFor="let levering of leveringen">
                 <mat-card>
                   <div>
@@ -61,13 +61,23 @@
                       mat-raised-button color="primary">BEWERK</button>
                     <button (click)="deleteLevering(levering.leveringID)" mat-raised-button
                       color="accent">VERWIJDER</button>
-                    <button (click)="viewProducts(levering.leveringID)" mat-raised-button color="tertiary">BEKIJK
+                    <button (click)="viewProducts(levering.leveringID)" class="EditButton" *ngIf="producten == null" mat-stroked-button color="accent">BEKIJK
+                      PRODUCTEN</button>
+                    <button (click)="hideProducts()" class="EditButton" *ngIf="producten != null" mat-stroked-button color="accent">VERBERG
                       PRODUCTEN</button>
                   </div>
                   <div *ngIf="producten != null">
+                    <button (click)="addProduct(levering.leveringID)" class="addProductButton" mat-stroked-button color="accent">VOEG
+                      PRODUCT TOE</button>
                     <mat-card *ngFor="let product of producten">
                       <div>
                         <div>{{product.naam}}</div>
+                        <div>
+                          <button (click)="editProduct(product.productID, product.levering.scheduleID)"
+                            class="EditButton" mat-raised-button color="primary">BEWERK</button>
+                          <button (click)="deleteProduct(product.productID)" mat-raised-button
+                            color="accent">VERWIJDER</button>
+                        </div>
                       </div>
                     </mat-card>
                   </div>

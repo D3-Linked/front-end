@@ -80,6 +80,10 @@ export class SchedulesComponent implements OnInit {
     this.getProductenByLeveringID(id);
   }
 
+  hideProducts(){
+    this.producten = null;
+  }
+
   getProductenByLeveringID(id: number) {
     this._adminService.getProductenByLeveringId(id).subscribe((result) => {
       this.producten = result;
@@ -124,5 +128,20 @@ export class SchedulesComponent implements OnInit {
 
   editLevering(id: number) {
     this.route.navigate(['/editLevering'], { queryParams: { id } });
+  }
+
+  addProduct(leveringID: number) {
+    this.route.navigate(['/addProduct'], { queryParams: { leveringID } });
+  }
+
+  //Delete a journalist from API, then get all journalists again for update page
+  deleteProduct(producTID: number, scheduleID: number) {
+    this._adminService
+      .deleteProduct(producTID)
+      .subscribe((result) => this.getLeveringenByScheduleID(scheduleID));
+  }
+
+  editProduct(id: number) {
+    this.route.navigate(['/editProduct'], { queryParams: { id } });
   }
 }
