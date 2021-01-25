@@ -21,9 +21,9 @@
           <div>
             <mat-form-field [style.width.px]=700>
                 <mat-label>Schedule</mat-label>
-                <mat-select [(ngModel)]="selectedSchedule" formControlName="scheduleID">
+                <mat-select [(ngModel)]="schedule.scheduleID" formControlName="scheduleID">
                     <mat-option *ngFor="let schedule of schedules" [value]="schedule.scheduleID">
-                      {{schedule.datum}}
+                      Schedule van {{schedule.datum | date:"dd/MM/yyyy"}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -38,7 +38,7 @@
               </mat-select>
           </mat-form-field>
       </div>
-            <button class="button" mat-raised-button color="primary" type="submit">Voeg leverancier toe</button>
+            <button class="button" mat-raised-button color="primary" type="submit">Voeg levering toe</button>
         </form>
     </mat-card-content>
 </mat-card>

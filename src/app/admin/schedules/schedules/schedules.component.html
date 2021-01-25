@@ -47,13 +47,19 @@
         <ng-container matColumnDef="expandedDetail">
           <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
             <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-              <div class="example-element-diagram"
-                *ngFor="let levering of getLeveringenByScheduleID(element.scheduleID)">
+              <h2>Leveringen voor {{element.datum |date:'dd/MM/yyyy'}} <button (click)="addLevering(element.scheduleID)" mat-raised-button
+                  color="accent">VOEG TOE</button></h2>
+              <div *ngFor="let levering of leveringen">
                 <mat-card>
-                  <div class="example-element-position"> {{levering.omschrijving}} </div>
-                  <div class="example-element-symbol"> {{levering.laadkade.nummer}} </div>
-                  <div class="example-element-name"> {{levering.schedule.datum | date:'dd/MM/yyyy'}} </div>
-                  <div class="example-element-weight"> {{levering.leverancier.code}} </div>
+                  <div>
+                    <div class="example-element-symbol">Omschrijving: {{levering.omschrijving}} </div>
+                    <div>Laadkade: {{levering.laadkade.nummer}} </div>
+                    <div> Leverancier: {{levering.leverancier.code}} ({{levering.leverancier.bedrijf.naam}}) </div>
+                  </div>
+                  <div id="align_end">
+                    <button (click)="editLevering(levering.leveringID, levering.scheduleID)" class="EditButton" mat-raised-button color="primary">BEWERK</button>
+                    <button (click)="deleteLevering(levering.leveringID)" mat-raised-button color="accent">VERWIJDER</button>
+                  </div>
                 </mat-card>
               </div>
               <div class="example-element-description">
@@ -66,7 +72,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
           [class.example-expanded-row]="expandedElement === element"
-          (click)="expandedElement = expandedElement === element ? null : element">
+          (click)="expandedElement = expandedElement === element ? null : element; getLeveringenByScheduleID(element.scheduleID)">
         </tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 

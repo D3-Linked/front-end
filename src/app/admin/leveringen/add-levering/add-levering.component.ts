@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Schedule } from 'src/app/models/schedule.model';
 import { Laadkade } from 'src/app/models/laadkade.model';
 import { Leverancier } from 'src/app/models/leverancier.model';
@@ -18,6 +18,12 @@ export class AddLeveringComponent implements OnInit {
   laadkades: Laadkade[];
   leveranciers: Leverancier[];
 
+  selectedSchedule: number;
+  selectedLaadkade: number;
+  selectedLeverancier: number;
+
+  schedule: Schedule = new Schedule(0, 0, new Date(), '', 1, null);
+
   addLeveringForm = this.fb.group({
     omschrijving: [''],
     laadkadeID: [''],
@@ -25,17 +31,22 @@ export class AddLeveringComponent implements OnInit {
     leverancierID: [''],
   });
 
-  selectedSchedule: number;
-  selectedLaadkade: number;
-  selectedLeverancier: number;
-
   constructor(
     private fb: FormBuilder,
     private _adminService: AdminService,
-    private route: Router
+    private route: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      if (params['scheduleID'] != null){
+        this.selectedSchedule = params['scheduleID'];
+        this._adminService.getScheduleById(this.selectedSchedule).subscribe(result => {
+          this.schedule = result;
+        })
+      }
+    });
     this.loadData();
   }
 

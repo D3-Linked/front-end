@@ -52,7 +52,6 @@ export class SchedulesComponent implements OnInit {
   constructor(private _adminService: AdminService, private route: Router) {}
 
   leveringen: Levering[] = null;
-  id: number;
 
   ngOnInit(): void {
     this.getSchedules();
@@ -68,12 +67,9 @@ export class SchedulesComponent implements OnInit {
   }
 
   getLeveringenByScheduleID(id: number) {
-    if (this.leveringen == null && id != this.id) {
-      this._adminService.getLeveringenByScheduleId(id).subscribe((result) => {
-        this.leveringen = result;
-      });
-    }
-    this.id = id;
+    this._adminService.getLeveringenByScheduleId(id).subscribe((result) => {
+      this.leveringen = result;
+    });
     return this.leveringen;
   }
 
@@ -99,5 +95,20 @@ export class SchedulesComponent implements OnInit {
 
   editSchedule(id: number) {
     this.route.navigate(['/editSchedule'], { queryParams: { id } });
+  }
+
+  addLevering(scheduleID: number){
+    this.route.navigate(['/addLevering'], {queryParams: {scheduleID}});
+  }
+
+  //Delete a journalist from API, then get all journalists again for update page
+  deleteLevering(leveringID: number, scheduleID: number) {
+    this._adminService.deleteLevering(leveringID).subscribe(
+      result => this.getLeveringenByScheduleID(scheduleID)
+    );
+  }
+
+  editLevering(id: number) {
+    this.route.navigate(['/editLevering'], { queryParams: { id }});
   }
 }

@@ -3,12 +3,12 @@
     <mat-card-content>
         <form [formGroup]="editBedrijfForm" (ngSubmit)="onSubmit()">
             <div>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field>
                     <mat-label>Naam</mat-label>
                     <input matInput type="text" formControlName="naam" [(ngModel)]="bedrijf.naam"/>
                 </mat-form-field>
             </div>
-            
+
             <button class="button" mat-raised-button color="primary" type="submit">Bewerk bedrijf</button>
         </form>
     </mat-card-content>
