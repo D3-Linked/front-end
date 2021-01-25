@@ -18,6 +18,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-schedules',
@@ -52,6 +53,7 @@ export class SchedulesComponent implements OnInit {
   constructor(private _adminService: AdminService, private route: Router) {}
 
   leveringen: Levering[] = null;
+  producten: Product[] = null;
 
   ngOnInit(): void {
     this.getSchedules();
@@ -69,8 +71,24 @@ export class SchedulesComponent implements OnInit {
   getLeveringenByScheduleID(id: number) {
     this._adminService.getLeveringenByScheduleId(id).subscribe((result) => {
       this.leveringen = result;
+      this.producten = null;
     });
     return this.leveringen;
+  }
+
+  viewProducts(id: number){
+    this.getProductenByLeveringID(id);
+  }
+
+  hideProducts(){
+    this.producten = null;
+  }
+
+  getProductenByLeveringID(id: number) {
+    this._adminService.getProductenByLeveringId(id).subscribe((result) => {
+      this.producten = result;
+    });
+    return this.producten;
   }
 
   //Apply filter when input in filterform
@@ -97,18 +115,33 @@ export class SchedulesComponent implements OnInit {
     this.route.navigate(['/editSchedule'], { queryParams: { id } });
   }
 
-  addLevering(scheduleID: number){
-    this.route.navigate(['/addLevering'], {queryParams: {scheduleID}});
+  addLevering(scheduleID: number) {
+    this.route.navigate(['/addLevering'], { queryParams: { scheduleID } });
   }
 
   //Delete a journalist from API, then get all journalists again for update page
   deleteLevering(leveringID: number, scheduleID: number) {
-    this._adminService.deleteLevering(leveringID).subscribe(
-      result => this.getLeveringenByScheduleID(scheduleID)
-    );
+    this._adminService
+      .deleteLevering(leveringID)
+      .subscribe((result) => this.getLeveringenByScheduleID(scheduleID));
   }
 
   editLevering(id: number) {
-    this.route.navigate(['/editLevering'], { queryParams: { id }});
+    this.route.navigate(['/editLevering'], { queryParams: { id } });
+  }
+
+  addProduct(leveringID: number) {
+    this.route.navigate(['/addProduct'], { queryParams: { leveringID } });
+  }
+
+  //Delete a journalist from API, then get all journalists again for update page
+  deleteProduct(producTID: number, scheduleID: number) {
+    this._adminService
+      .deleteProduct(producTID)
+      .subscribe((result) => this.getLeveringenByScheduleID(scheduleID));
+  }
+
+  editProduct(id: number) {
+    this.route.navigate(['/editProduct'], { queryParams: { id } });
   }
 }

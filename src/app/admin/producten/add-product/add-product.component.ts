@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Levering } from 'src/app/models/levering.model';
 
 @Component({
@@ -19,10 +19,19 @@ export class AddProductComponent implements OnInit {
 
   leveringen: Levering[];
   selectedLevering: number;
+  levering: Levering;
 
-  constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router) { }
+  constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      if (params['leveringID'] != null){
+        this.selectedLevering = params['leveringID'];
+        this._adminService.getLeveringById(this.selectedLevering).subscribe(result => {
+          this.levering = result;
+        })
+      }
+    });
     this.getLeveringen();
   }
 

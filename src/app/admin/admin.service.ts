@@ -125,6 +125,10 @@ export class AdminService {
     return this.http.get<Product>(this.baseUrl + "producten/" + id);
   }
 
+  getProductenByLeveringId(id:number): Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl + "producten/levering/" + id);
+  }
+
   updateProduct(productID: number, product: Product): Observable<Product> {
     return this.http.put<Product>(this.baseUrl + "producten/" + productID, product);
   }
