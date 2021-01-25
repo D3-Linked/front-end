@@ -24,8 +24,10 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/favicon.png",
+              "src/assets",
+              "src/extensions/TinyReload",
+              "src/web.config"
             ],
             "styles": [
               "src/styles.scss"
