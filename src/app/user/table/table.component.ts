@@ -10,7 +10,9 @@ declare var Jquery: any;
 })
 export class TableComponent implements OnInit {
 
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService) { 
+
+  }
 
   ngOnInit(): void {
     if (!localStorage.getItem('foo')) { 

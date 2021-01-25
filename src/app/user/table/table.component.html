@@ -1,34 +1,30 @@
-<div><button id="ClearAll" class="buttonstyle">Clear All</button></div>
-
-
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile id="reload" class="qvplaceholder gridanders"></mat-grid-tile>
-    <mat-grid-tile id="filter" class="qvplaceholder gridanders"></mat-grid-tile>
-    <mat-grid-tile id="vooruitgang" class="qvplaceholder"></mat-grid-tile>
-    <mat-grid-tile id="lkstatus" class="qvplaceholder"></mat-grid-tile>
-    <mat-grid-tile id="lkbedrijf" class="qvplaceholder"></mat-grid-tile>
-    <mat-grid-tile id="infobedrijf" class="qvplaceholder"></mat-grid-tile>
-    <mat-grid-tile id="producten" class="qvplaceholder"></mat-grid-tile>
-    <mat-grid-tile id="actievelk" class="qvplaceholder"></mat-grid-tile>
-</mat-grid-list>
+<!-- <div><button id="ClearAll" class="buttonstyle">Clear All</button></div> -->
+<!-- <div  id="lkbedrijf" class="qvplaceholder"></div> -->
 
 <!-- <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile id="producten" class="qvplaceholder"></mat-grid-tile>
-    <mat-grid-tile id="actievelk" class="qvplaceholder"></mat-grid-tile>
+    <mat-grid-tile id="reload" class="qvplaceholder smallimg"></mat-grid-tile>
+    <mat-grid-tile id="filter" class="qvplaceholder others"></mat-grid-tile>
+    <mat-grid-tile id="vooruitgang" class="qvplaceholder others"></mat-grid-tile>
+    <mat-grid-tile id="lkstatus" class="qvplaceholder others"></mat-grid-tile>
+    <mat-grid-tile id="lkbedrijf" class="qvplaceholder others"></mat-grid-tile>
+    <mat-grid-tile id="infobedrijf" class="qvplaceholder others"></mat-grid-tile>
+    <mat-grid-tile id="producten" class="qvplaceholder others"></mat-grid-tile>
+    <mat-grid-tile id="actievelk" class="qvplaceholder others"></mat-grid-tile>
 </mat-grid-list> -->
 
-<!-- <div class="col-8">
-    <div id="reload" class="qvplaceholder"></div>
-    <div id="filter" class="qvplaceholder"></div>
-    <div id="vooruitgang" class="qvplaceholder"></div>
-
-    <div id="lkstatus" class="qvplaceholder"></div>
-    <div id="lkbedrijf" class="qvplaceholder"></div>
-    <div id="infobedrijf" class="qvplaceholder"></div>
-
-
-
-
-    <div id="producten" class="qvplaceholder"></div>
-    <div id="actievelk" class="qvplaceholder"></div>
-</div> -->
+<div class="grid-container">
+    <div id="vooruitgang" class="leveringen qvplaceholder"></div>
+    <div id="lkstatus" class="laadkade-status qvplaceholder"></div>
+    <div id="lkbedrijf" class="laadkade-bedrijf qvplaceholder"></div>
+    <div class="filter">
+        <div id="reload" class="qvplaceholder smallimg filter1"></div>
+        <div class="filter2">
+            <button mat-raised-button id="ClearAll" style="font-size: larger;" color="Accent">Filters
+                verwijderen</button>
+        </div>
+    </div>
+    <div id="actievelk" class="barchart-product qvplaceholder"></div>
+    <div id="producten" class="barchart-laadkade qvplaceholder"></div>
+    <div id="infobedrijf" class="informatie-bedrijf qvplaceholder"></div>
+    <div id="filter" class="datum-filter qvplaceholder"></div>
+</div>

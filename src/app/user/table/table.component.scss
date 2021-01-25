@@ -6,8 +6,8 @@
 
 .qvplaceholder, .qvobject {
 	flex: 1 1 auto;
-	height: 300px;
-	max-width: 800px;
+	height: 400px;
+	min-width: auto;
 	margin: 45px 0 0 45px;
 }
 mat-grid-tile{
@@ -16,7 +16,14 @@ mat-grid-tile{
 mat-grid-list{
 	padding-bottom: 10px !important;
 }
+.smallimg {
+	width: 200px !important;
+}
 
+// .others{
+// 	width: 500px !important;
+// 	height: auto;
+// }
 // #vooruitgang, #lkstatus, #lkbedrijf, #infobedrijf, #filter, #producten, #actievelk{
 // 	min-width: 400px;
 // }
@@ -58,3 +65,42 @@ mat-grid-list{
 #popupText {
 	margin-right: 23px;
 }
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1.1fr 1.1fr 0.8fr;
+	gap: 0px 0px;
+	grid-template-areas:
+	  "leveringen laadkade-status laadkade-bedrijf datum-filter filter"
+	  "barchart-product barchart-product informatie-bedrijf informatie-bedrijf filter"
+	  "barchart-laadkade barchart-laadkade barchart-laadkade barchart-laadkade filter";
+  }
+  .filter1{
+	  margin: auto;
+  }
+  .filter2{
+	  margin: auto;
+	  vertical-align: auto;
+	  position: relative;
+	  width: 371px;
+	  left: 25%;
+  }
+  .leveringen { grid-area: leveringen; }
+  
+  .laadkade-status { grid-area: laadkade-status; }
+  
+  .laadkade-bedrijf { grid-area: laadkade-bedrijf; }
+  
+  .filter { grid-area: filter; background-color: #8c9eff; }
+  
+  .barchart-product { grid-area: barchart-product; }
+  
+  .barchart-laadkade { grid-area: barchart-laadkade; }
+  
+  .informatie-bedrijf { grid-area: informatie-bedrijf; }
+  
+  .datum-filter { grid-area: datum-filter; }
+  
+  
+  
