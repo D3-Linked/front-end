@@ -11,6 +11,8 @@
                 [routerLinkActiveOptions]="{ exact: true }">Table</a>
             <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==3" routerLink="/admin" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Admin</a>
+            <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==2" routerLink="/planningAdmin" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Planning</a>
           </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>

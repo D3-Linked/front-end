@@ -23,10 +23,13 @@ import { AdminComponent } from '../app/admin/admin/admin.component';
 import { UserModule } from '../app/user/user.module';
 import { TableComponent } from './user/table/table.component';
 
+import {PlanningComponent} from './planning-admin/planning/planning.component'
+import { PlanningAdminModule } from './planning-admin/planning-admin.module';
 
 const appRoutes: Routes = [
   { path: 'login', component: SecurityComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'planningAdmin', component: PlanningComponent },
   { path: 'table', component: TableComponent },
 ];
 
@@ -44,7 +47,8 @@ const appRoutes: Routes = [
     MatListModule,
     SecurityModule,
     AdminModule,
-    UserModule
+    UserModule,
+    PlanningAdminModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

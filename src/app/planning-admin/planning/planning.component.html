@@ -1,0 +1,178 @@
+<div id="container">
+  <h1>Beheer planningen</h1>
+
+
+  <mat-tab-group animationDuration="0ms" [selectedIndex]="selectedTab" (selectedIndexChange)="backToAll($event)">
+    <mat-tab label="Alle planningen">
+      <div class="accordion">
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel disabled>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Datum
+              </mat-panel-title>
+              <mat-panel-description>
+                Opmerking
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+          <mat-expansion-panel *ngFor="let schedule of schedules">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{schedule.datum | date:"dd/MM/yyyy"}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Opmerking: {{schedule.opmerking}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+              Opgemaakt door: {{schedule.user.naam}}
+            </div>
+            <div>
+              Code: {{schedule.code}}
+            </div>
+            <div>
+              <button mat-raised-button color="primary" (click)="goToDetails(schedule.scheduleID)">Bekijk
+                details</button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </mat-tab>
+    <mat-tab label="Details planning" disabled *ngIf="selectedSchedule">
+      <mat-card *ngIf="selectedSchedule != null" id="detailsCard">
+        <mat-card-header>
+          <mat-card-title>
+            Schedule van {{this.selectedSchedule.datum | date:"dd/MM/yyyy"}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            <div>Opmerking: {{this.selectedSchedule.opmerking}}</div>
+            <div>Gemaakt door: {{this.selectedSchedule.user.naam}}</div>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>Verwachte leveringen</h2>
+          <div class="accordion">
+            <mat-accordion class="example-headers-align">
+              <mat-expansion-panel disabled>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Laadkade
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Leverancier
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngFor="let levering of leveringenOfSchedule">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Laadkade {{levering.laadkade.nummer}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Afkomstig van leverancier {{levering.leverancier.code}} ({{levering.leverancier.bedrijf.naam}})
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <h2>Producten</h2>
+                <button (click)="viewProducts(levering.leveringID)" class="EditButton"
+                  *ngIf="productenOfLevering == null" mat-stroked-button color="accent">BEKIJK
+                  PRODUCTEN</button>
+                <button (click)="hideProducts()" class="EditButton" *ngIf="productenOfLevering != null"
+                  mat-stroked-button color="accent">VERBERG
+                  PRODUCTEN</button>
+                <div id="productCardContainer">
+                  <mat-card *ngFor="let product of productenOfLevering" class="productCard">
+                    <mat-card-content>
+                      <div>{{product.naam}}</div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Nieuwe planning">
+      <div id="AddScheduleCardContainer">
+        <mat-card id="AddScheduleCard">
+          <mat-card-content>
+            <form [formGroup]="addScheduleForm" (ngSubmit)="onSubmit()">
+              <div>
+                <mat-form-field [style.width.px]=700>
+                  <mat-label>Code</mat-label>
+                  <input matInput type="text" formControlName="code" />
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field [style.width.px]=700 appearance="fill">
+                  <mat-label>Kies een datum</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="datum">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field [style.width.px]=700>
+                  <mat-label>Opmerking</mat-label>
+                  <input matInput type="text" formControlName="opmerking" />
+                </mat-form-field>
+              </div>
+              <button class="button" mat-raised-button color="primary" type="submit" *ngIf="!planningAdded">Voeg
+                leveringen toe</button>
+            </form>
+            <div id="leveringenContainer" *ngIf="planningAdded">
+              <h2>Voeg leveringen toe aan deze planning</h2>
+              <form [formGroup]="addLeveringForm" (ngSubmit)="onLeveringSubmit()">
+                <div>
+                  <mat-form-field [style.width.px]=700>
+                    <mat-label>Omschrijving</mat-label>
+                    <input matInput type="text" formControlName="omschrijving" />
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field [style.width.px]=700>
+                    <mat-label>Laadkade</mat-label>
+                    <mat-select formControlName="laadkadeID">
+                      <mat-option *ngFor="let laadkade of laadkades" [value]="laadkade.laadkadeID">
+                        {{laadkade.nummer}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field [style.width.px]=700>
+                    <mat-label>Leverancier</mat-label>
+                    <mat-select formControlName="leverancierID">
+                      <mat-option *ngFor="let leverancier of leveranciers" [value]="leverancier.leverancierID">
+                        {{leverancier.code}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <button class="button" mat-raised-button color="primary" type="submit" *ngIf="!leveringAdded">Voeg
+                  producten toe</button>
+              </form>
+            </div>
+            <div id="productenContainer" *ngIf="leveringAdded">
+              <h2>Voeg producten toe aan deze levering</h2>
+              <form [formGroup]="addProductForm" (ngSubmit)="onSubmitProduct()">
+                <div>
+                  <mat-form-field [style.width.px]=700>
+                    <mat-label>Naam</mat-label>
+                    <input matInput type="text" formControlName="naam" />
+                  </mat-form-field>
+                </div>
+                <button class="button" mat-raised-button color="primary" type="submit">Voeg product toe</button>
+                <button class="button" mat-raised-button color="accent" (click)="makeNewLevering()">Voeg nog een
+                  levering toe</button>
+              </form>
+              <button class="button" mat-stroked-button color="accent" (click)="scheduleReady()">Deze planning is
+                klaar</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

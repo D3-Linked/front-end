@@ -18,6 +18,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -55,7 +59,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule,
+    MatExpansionModule
   ]
 })
 export class SharedModule { }

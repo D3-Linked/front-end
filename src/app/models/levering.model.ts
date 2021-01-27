@@ -11,6 +11,7 @@ export class Levering {
         public leverancierID: number,
         public laadkade: Laadkade,
         public schedule: Schedule,
-        public leverancier: Leverancier
+        public leverancier: Leverancier,
+        public isCompleet: boolean
     ){}
 }

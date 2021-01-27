@@ -13,7 +13,7 @@ import { Role } from '../../../models/role.model';
 @Component({
   selector: 'app-rollen',
   templateUrl: './rollen.component.html',
-  styleUrls: ['./rollen.component.scss']
+  styleUrls: ['./rollen.component.scss', '../../../app.component.scss']
 })
 export class RollenComponent implements OnInit {
 

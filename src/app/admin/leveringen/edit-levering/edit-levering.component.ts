@@ -91,6 +91,7 @@ export class EditLeveringComponent implements OnInit {
     this.levering.laadkade = this.getLaadkade(this.levering.laadkadeID);
     this.levering.schedule = this.getSchedule(this.levering.scheduleID);
     this.levering.leverancier = this.getLeverancier(this.levering.leverancierID);
+
     console.log(this.levering);
     this._adminService.updateLevering(this.id, this.levering).subscribe();
     this.route.navigate(['/leveringen']);
