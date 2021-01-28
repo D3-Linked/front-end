@@ -25,6 +25,7 @@ import { TableComponent } from './user/table/table.component';
 
 import {PlanningComponent} from './planning-admin/planning/planning.component'
 import { PlanningAdminModule } from './planning-admin/planning-admin.module';
+import { SharedModule } from './shared/shared.module';
 
 const appRoutes: Routes = [
   { path: 'login', component: SecurityComponent },
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     SecurityModule,
     AdminModule,
     UserModule,
-    PlanningAdminModule
+    PlanningAdminModule,
+    SharedModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
