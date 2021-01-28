@@ -36,3 +36,21 @@
     </mat-grid-tile>
 </mat-grid-list>
     <mat-card id=footer width=100%><span>&#169;</span>Linked | 2021<div id="socialmedia"><a id="twitter" href="https://twitter.com/IAbdelmalki">Volg ons op twitter</a></div></mat-card>
+<!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Bekijk uw levering
+        </mat-panel-title>
+        <mat-panel-description>
+            {{panelOpenState ? 'Vul hier uw code in die u heeft gekregen.' : 'Klik hier'}}
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form  >
+        <mat-form-field>
+            <mat-label>Vul hier uw code in</mat-label>
+            <input matInput placeholder="Ex. 1234" [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <br>
+        <button class="button" (click)="goTo(code)" mat-raised-button color="primary" type="submit">Zoek uw levering op</button>
+    </form>
+</mat-expansion-panel> -->
