@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Levering } from '../models/levering.model';
+import { Product } from '../models/product.model';
 
 
 @Injectable({
@@ -13,8 +14,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   baseUrl = environment.baseUrl
-  
+
   getPlanning(id: number): Observable<Levering>{
     return this.http.get<Levering>(this.baseUrl + "leveringen/code/" + id)
+  }
+
+  getProductenByLeveringId(id:number): Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl + "producten/levering/" + id);
   }
 }
