@@ -12,12 +12,9 @@
                 [routerLinkActiveOptions]="{ exact: true }">Table</a>
             <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==3" routerLink="/admin" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Admin</a>
-<<<<<<< HEAD
             <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==2" routerLink="/planningAdmin" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Planning</a>
-=======
                 <a mat-list-item class="nav-item" *ngIf="loggedUser!=null" (click)="onLogout()">Logout</a>
->>>>>>> f103c2a10c1016469ed3e6e957f3cf23cfc7723a
           </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
