@@ -13,7 +13,7 @@ import { Product } from '../../../models/product.model';
 @Component({
   selector: 'app-producten',
   templateUrl: './producten.component.html',
-  styleUrls: ['./producten.component.scss']
+  styleUrls: ['./producten.component.scss', '../../../app.component.scss']
 })
 export class ProductenComponent implements OnInit {
 

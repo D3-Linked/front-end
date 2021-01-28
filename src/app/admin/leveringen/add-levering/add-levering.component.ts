@@ -29,6 +29,7 @@ export class AddLeveringComponent implements OnInit {
     laadkadeID: [''],
     scheduleID: [''],
     leverancierID: [''],
+    isCompleet: false
   });
 
   constructor(

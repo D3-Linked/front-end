@@ -13,7 +13,7 @@ import { Leverancier } from '../../../models/leverancier.model';
 @Component({
   selector: 'app-leveranciers',
   templateUrl: './leveranciers.component.html',
-  styleUrls: ['./leveranciers.component.scss']
+  styleUrls: ['./leveranciers.component.scss', '../../../app.component.scss']
 })
 export class LeveranciersComponent implements OnInit {
   leveranciers: Leverancier[];

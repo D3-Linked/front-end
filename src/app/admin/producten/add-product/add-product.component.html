@@ -12,7 +12,7 @@
       <div>
         <mat-form-field [style.width.px]=700>
           <mat-label>Levering</mat-label>
-          <mat-select [(ngModel)]="levering.leveringID" formControlName="leveringID">
+          <mat-select [(ngModel)]="selectedLevering" formControlName="leveringID">
             <mat-option *ngFor="let levering of leveringen" [value]="levering.leveringID">
               Opmerking: {{levering.omschrijving}}, van bedrijf {{levering.leverancier.bedrijf.naam}}
             </mat-option>

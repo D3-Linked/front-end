@@ -1,0 +1,37 @@
+#container{
+  width: 80%;
+  margin: 25px auto auto auto;
+}
+
+.accordion, #detailsCard, #AddScheduleCardContainer{
+  margin-top: 15px;
+}
+
+.mat-expansion-panel-header-description {
+  display: flex;
+  justify-content: left;
+  width: 600px;
+}
+.mat-expansion-panel-header-title {
+  width: 100px;
+}
+
+.productCard{
+  margin: 15px 15px 0 0;
+  width: 200px;
+  background-color: rgba(132, 160, 245, 0.1)
+}
+
+#productCardContainer{
+  display: flex;
+}
+
+#AddScheduleCard{
+  max-width: 700px;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.button{
+  margin: 15px 15px 0 0;
+}

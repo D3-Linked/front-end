@@ -13,7 +13,7 @@ import { Levering } from '../../../models/levering.model';
 @Component({
   selector: 'app-leveringen',
   templateUrl: './leveringen.component.html',
-  styleUrls: ['./leveringen.component.scss']
+  styleUrls: ['./leveringen.component.scss', '../../../app.component.scss']
 })
 export class LeveringenComponent implements OnInit {
 

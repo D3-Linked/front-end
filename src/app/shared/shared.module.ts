@@ -18,7 +18,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -41,7 +42,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    IvyCarouselModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -59,7 +61,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    IvyCarouselModule
+    MatTabsModule,
+    MatExpansionModule
   ]
   
 })
