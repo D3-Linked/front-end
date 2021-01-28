@@ -22,3 +22,19 @@ mat-card-content {
     margin: 100px auto;
     height: 50%;
 }
+h1{
+    padding-top: 50px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.btncenter{
+    text-align: center !important;
+    align-items: center !important;
+}
+@media (min-width: 900px) {
+    .voorlaatste{
+        margin-left: 225px !important;
+    }
+  }

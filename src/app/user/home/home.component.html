@@ -2,11 +2,13 @@
     <mat-grid-tile colspan=2>
         <img src="assets/logistiek.jpg" alt="header-logistiek">  
     </mat-grid-tile>
-    <mat-grid-tile >
+</mat-grid-list>
+<mat-grid-list cols="2" rowHeight="300px" width="2000px;">
+    <mat-grid-tile>
         <mat-card id="card">
-            <mat-card-title>Onze richtlijnen</mat-card-title>
+            <mat-card-title>Onze socialmedia</mat-card-title>
             <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Heb je interesse in wat wij doen of wil je meer weten over ons ? Volg ons dan gerust even op social media waar wij regelmatig de laatste nieuwtjes posten. 
             </mat-card-content>
             <mat-card-actions>
                 <a href="https://twitter.com/IAbdelmalki"><button mat-button>Twitter</button></a>
@@ -15,14 +17,29 @@
         <mat-card id="card">
             <mat-card-title>Onze richtlijnen</mat-card-title>
             <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Als Linked staan wij in voor een veilige en betrouwbaare service. Bij ons kan je rekenen op kwaliteit. Wij vinden een goede service zeer belangrijk dus bij problemen staan wij steeds klaar om deze zo snel mogelijk op te lossen.
             </mat-card-content>
-            <mat-card-actions>
-                <a href="https://twitter.com/IAbdelmalki"><button mat-button>Twitter</button></a>
-            </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile rowspan=2 rowHeight="100%">
+    <mat-grid-tile>
+        <mat-card id="card">
+            <mat-card-title>Hoe bekijk ik mijn levering</mat-card-title>
+            <mat-card-content>
+                Alle details over je levering bekijken ? Dit kan vanaf nu heel simpel met je leveringscode. Hier leggen we stap voor stap uit hoe je dit doet! hieronder zie je een vakje met 'Bekijk u levering' klik hier op 'Klik hier' en vul de correcte leveringscode in. Dan ga je doorgestuurd worden naar een pagina met alle details. Heb je nog vragen ? of heb je de leveringscode niet, aarzel niet om contact met ons op te nemen op: 014 12 34 56
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <mat-card id="card">
+            <mat-card-title>Wat doet linked</mat-card-title>
+            <mat-card-content>
+                Wat doen wij ? Wij als linked bieden een alround IT service voor logistieke bedrijven. Wij bieden een kant en klaar systeem aan dat het laden en lossen van goederen vergemakkelijkt en versneld op basis van nummerplaatherkenning en een automatische planning. Wij staan in voor een betrouwbare en uitbreidbaare service, die steeds up to date is met de laatste nieuwtjes.
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -41,20 +58,7 @@
                 <button class="button" (click)="goTo(code)" mat-raised-button color="primary" type="submit">Zoek uw levering op</button>
             </form>
         </mat-expansion-panel>
-        
-
-
     </mat-grid-tile>
-    <mat-grid-tile>
-        <mat-card id="card">
-            <mat-card-title>Onze richtlijnen</mat-card-title>
-            <mat-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </mat-card-content>
-            <mat-card-actions>
-                <a href="https://twitter.com/IAbdelmalki"><button mat-button>Twitter</button></a>
-            </mat-card-actions>
-        </mat-card>
-    </mat-grid-tile>
+
 </mat-grid-list>
-    <mat-card id=footer width=100%><span>&#169;</span>Linked | 2021<div id="socialmedia"><a id="twitter" href="https://twitter.com/IAbdelmalki">Volg ons op twitter</a></div></mat-card>
+   
