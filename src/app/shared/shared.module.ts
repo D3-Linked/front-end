@@ -64,5 +64,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTabsModule,
     MatExpansionModule
   ]
+  
 })
 export class SharedModule { }
