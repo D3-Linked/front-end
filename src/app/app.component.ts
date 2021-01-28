@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from './models/user.model';
 import { Router } from '@angular/router';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,18 @@ export class AppComponent {
 
   loggedUser: User = null;
 
-  constructor(private router: Router){
-    this.loggedUser = JSON.parse(localStorage.getItem("LoggedUser"));
+  constructor(private router: Router, private appService: AppService){
+    localStorage.clear();
+  }
+
+  getLoggedUser(){
+    this.loggedUser = this.appService.getLoggedUser();
   }
 
   onLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("LoggedUser");
+    this.loggedUser = null;
     this.router.navigate(['/login']);
   }
 }
