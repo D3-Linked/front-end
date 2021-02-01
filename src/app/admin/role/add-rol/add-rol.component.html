@@ -3,12 +3,13 @@
     <mat-card-content>
         <form [formGroup]="addRolForm" (ngSubmit)="onSubmit()">
             <div>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field class="formfield">
                     <mat-label>Naam</mat-label>
                     <input matInput type="text" formControlName="naam" />
                 </mat-form-field>
+                <control-messages [control]="addRolForm.get('naam')" class="errorMessage"></control-messages>
             </div>
-            <button class="button" mat-raised-button color="primary" type="submit">Voeg rol toe</button>
+            <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!addRolForm.valid">Voeg rol toe</button>
         </form>
     </mat-card-content>
 </mat-card>

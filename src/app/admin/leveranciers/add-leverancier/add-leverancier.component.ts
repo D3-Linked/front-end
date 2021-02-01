@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 import { Bedrijf } from '../../../models/bedrijf.model';
 import { Router } from '@angular/router';
@@ -7,17 +7,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-leverancier',
   templateUrl: './add-leverancier.component.html',
-  styleUrls: ['./add-leverancier.component.scss']
+  styleUrls: ['./add-leverancier.component.scss', '../../admin_style.scss']
 })
 export class AddLeverancierComponent implements OnInit {
 
   bedrijven : Bedrijf[] = null;
-  
+
   selectedValue:string;
 
   addLeverancierForm = this.fb.group({
-    code: [''],
-    bedrijfID: ['']
+    code: ['', [Validators.required, Validators.min(0)]],
+    nummerplaat: ['', [Validators.required, Validators.minLength(6)]],
+    bedrijfID: ['', Validators.required]
   })
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router) { }
 

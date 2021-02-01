@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { Router } from '@angular/router';
@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-schedule',
   templateUrl: './add-schedule.component.html',
-  styleUrls: ['./add-schedule.component.scss']
+  styleUrls: ['./add-schedule.component.scss', '../../admin_style.scss']
 })
 export class AddScheduleComponent implements OnInit {
 
   addScheduleForm = this.fb.group({
     code: 0,
-    datum: [''],
+    datum: ['', Validators.required],
     opmerking: [''],
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID
   })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-edit-schedule',
   templateUrl: './edit-schedule.component.html',
-  styleUrls: ['./edit-schedule.component.scss']
+  styleUrls: ['./edit-schedule.component.scss', '../../admin_style.scss']
 })
 export class EditScheduleComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class EditScheduleComponent implements OnInit {
 
   editScheduleForm = this.fb.group({
     code: 0,
-    datum: [''],
+    datum: ['', Validators.required],
     opmerking: [''],
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID
   });

@@ -3,13 +3,21 @@
     <mat-card-content>
         <form [formGroup]="addLeverancierForm" (ngSubmit)="onSubmit()">
             <div>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field class="formfield">
                     <mat-label>Code</mat-label>
-                    <input matInput type="text" formControlName="code" />
+                    <input matInput type="number" formControlName="code" />
                 </mat-form-field>
+                <control-messages [control]="addLeverancierForm.get('code')" class="errorMessage"></control-messages>
             </div>
             <div>
-                <mat-form-field [style.width.px]=700>
+              <mat-form-field class="formfield">
+                  <mat-label>Nummerplaat</mat-label>
+                  <input matInput type="text" formControlName="nummerplaat" />
+              </mat-form-field>
+              <control-messages [control]="addLeverancierForm.get('nummerplaat')" class="errorMessage"></control-messages>
+          </div>
+            <div>
+                <mat-form-field class="formfield">
                     <mat-label>Bedrijf</mat-label>
                     <mat-select [(ngModel)]="selectedValue" formControlName="bedrijfID">
                         <mat-option *ngFor="let bedrijf of bedrijven" [value]="bedrijf.bedrijfID">
@@ -17,8 +25,9 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+                <control-messages [control]="addLeverancierForm.get('bedrijfID')" class="errorMessage"></control-messages>
             </div>
-            <button class="button" mat-raised-button color="primary" type="submit">Voeg leverancier toe</button>
+            <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!addLeverancierForm.valid">Voeg leverancier toe</button>
         </form>
     </mat-card-content>
 </mat-card>

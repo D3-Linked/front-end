@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Leverancier } from 'src/app/models/leverancier.model';
 @Component({
   selector: 'app-edit-levering',
   templateUrl: './edit-levering.component.html',
-  styleUrls: ['./edit-levering.component.scss'],
+  styleUrls: ['./edit-levering.component.scss', '../../admin_style.scss'],
 })
 export class EditLeveringComponent implements OnInit {
   constructor(
@@ -27,10 +27,10 @@ export class EditLeveringComponent implements OnInit {
   leveranciers: Leverancier[];
 
   editLeveringForm = this.fb.group({
-    omschrijving: [''],
-    laadkadeID: [''],
-    scheduleID: [''],
-    leverancierID: [''],
+    omschrijving: ['', [Validators.required, Validators.minLength(2)]],
+    laadkadeID: ['', Validators.required],
+    scheduleID: ['', Validators.required],
+    leverancierID: ['', Validators.required],
   });
 
   id: number = 0;

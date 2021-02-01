@@ -3,14 +3,15 @@
   <mat-card-content>
     <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
       <div>
-        <mat-form-field [style.width.px]=700>
+        <mat-form-field class="formfield">
           <mat-label>Naam</mat-label>
           <input matInput type="text" formControlName="naam" />
         </mat-form-field>
+        <control-messages [control]="addProductForm.get('naam')" class="errorMessage"></control-messages>
       </div>
 
       <div>
-        <mat-form-field [style.width.px]=700>
+        <mat-form-field class="formfield">
           <mat-label>Levering</mat-label>
           <mat-select [(ngModel)]="selectedLevering" formControlName="leveringID">
             <mat-option *ngFor="let levering of leveringen" [value]="levering.leveringID">
@@ -18,8 +19,9 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <control-messages [control]="addProductForm.get('leveringID')" class="errorMessage"></control-messages>
       </div>
-      <button class="button" mat-raised-button color="primary" type="submit">Voeg product toe</button>
+      <button class="button" mat-raised-button color="primary" type="submit"  [disabled]="!addProductForm.valid">Voeg product toe</button>
     </form>
   </mat-card-content>
 </mat-card>

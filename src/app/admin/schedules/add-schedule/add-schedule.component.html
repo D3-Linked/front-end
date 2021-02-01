@@ -3,20 +3,21 @@
   <mat-card-content>
     <form [formGroup]="addScheduleForm" (ngSubmit)="onSubmit()">
       <div>
-        <mat-form-field [style.width.px]=700 appearance="fill">
+        <mat-form-field class="formfield" appearance="fill">
           <mat-label>Kies een datum</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="datum" >
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <control-messages [control]="addScheduleForm.get('datum')" class="errorMessage"></control-messages>
       </div>
       <div>
-        <mat-form-field [style.width.px]=700>
+        <mat-form-field class="formfield">
           <mat-label>Opmerking</mat-label>
           <input matInput type="text" formControlName="opmerking" />
         </mat-form-field>
       </div>
-      <button class="button" mat-raised-button color="primary" type="submit">Voeg schedule toe</button>
+      <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!addScheduleForm.valid">Voeg schedule toe</button>
     </form>
   </mat-card-content>
 </mat-card>

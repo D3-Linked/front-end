@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { Router } from '@angular/router';
@@ -8,16 +8,16 @@ import { Role } from 'src/app/models/role.model';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styleUrls: ['./add-user.component.scss', '../../admin_style.scss']
 })
 export class AddUserComponent implements OnInit {
 
   addGebruikerForm = this.fb.group({
-    naam: [''],
-    email: [''],
-    paswoord: [''],
+    naam: ['', [Validators.required, Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.email]],
+    paswoord: ['', [Validators.required, Validators.minLength(5)]],
     token: null,
-    roleID: ['']
+    roleID: ['', Validators.required]
   })
 
   rollen: Role[];

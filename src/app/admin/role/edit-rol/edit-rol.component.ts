@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,14 +9,14 @@ import { Role } from 'src/app/models/role.model';
 @Component({
   selector: 'app-edit-rol',
   templateUrl: './edit-rol.component.html',
-  styleUrls: ['./edit-rol.component.scss']
+  styleUrls: ['./edit-rol.component.scss', '../../admin_style.scss']
 })
 export class EditRolComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
   editRolForm = this.fb.group({
-    naam: [''],
+    naam: ['', [Validators.required, Validators.minLength(2)]],
   })
 
   id: number = 0;

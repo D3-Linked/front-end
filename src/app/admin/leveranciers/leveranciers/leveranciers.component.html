@@ -1,7 +1,7 @@
 <h1>Leveranciers</h1>
 <div class="tableField">
   <mat-card id="card">
-    <mat-form-field>
+    <mat-form-field id="filter">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Leverancier" #input>
     </mat-form-field>
@@ -15,6 +15,12 @@
         <ng-container matColumnDef="code">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
           <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+        </ng-container>
+
+        <!-- Code Column -->
+        <ng-container matColumnDef="nummerplaat">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nummerplaat </th>
+          <td mat-cell *matCellDef="let row"> {{row.nummerplaat}} </td>
         </ng-container>
 
         <!-- Bedrijf Column -->

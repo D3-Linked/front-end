@@ -13,11 +13,11 @@ import { Leverancier } from '../../../models/leverancier.model';
 @Component({
   selector: 'app-leveranciers',
   templateUrl: './leveranciers.component.html',
-  styleUrls: ['./leveranciers.component.scss', '../../../app.component.scss']
+  styleUrls: ['./leveranciers.component.scss', '../../../app.component.scss', '../../admin_style.scss']
 })
 export class LeveranciersComponent implements OnInit {
   leveranciers: Leverancier[];
-  displayedColumns: string[] = ['code', 'bedrijf', 'deleteLeverancier'];
+  displayedColumns: string[] = ['code', 'nummerplaat', 'bedrijf', 'deleteLeverancier'];
   dataSource: MatTableDataSource<Leverancier>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

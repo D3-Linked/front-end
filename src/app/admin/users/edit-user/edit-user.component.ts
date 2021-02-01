@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Role } from 'src/app/models/role.model';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  styleUrls: ['./edit-user.component.scss', '../../admin_style.scss']
 })
 export class EditUserComponent implements OnInit {
 
@@ -18,9 +18,9 @@ export class EditUserComponent implements OnInit {
   rollen: Role[];
 
   editGebruikerForm = this.fb.group({
-    naam: [''],
-    email: [''],
-    roleID: ['']
+    naam: ['', [Validators.required, Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.email]],
+    roleID: ['', Validators.required]
   })
 
   id: number = 0;

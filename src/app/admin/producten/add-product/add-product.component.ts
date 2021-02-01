@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,13 +8,13 @@ import { Levering } from 'src/app/models/levering.model';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  styleUrls: ['./add-product.component.scss', '../../admin_style.scss']
 })
 export class AddProductComponent implements OnInit {
 
   addProductForm = this.fb.group({
-    naam: [''],
-    leveringID: ['']
+    naam: ['', [Validators.required, Validators.minLength(2)]],
+    leveringID: ['', Validators.required]
   })
 
   leveringen: Levering[];

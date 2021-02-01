@@ -23,7 +23,7 @@ import { Product } from 'src/app/models/product.model';
 @Component({
   selector: 'app-schedules',
   templateUrl: './schedules.component.html',
-  styleUrls: ['./schedules.component.scss', '../../../app.component.scss'],
+  styleUrls: ['./schedules.component.scss', '../../../app.component.scss', '../../admin_style.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),

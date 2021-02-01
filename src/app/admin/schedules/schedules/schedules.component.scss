@@ -1,96 +1,9 @@
-.tableField {
-  margin: 100px;
-}
-
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-td,
-th {
-  width: 20%;
-}
-
-.addButton {
-  margin-bottom: 25px;
-}
-
-mat-card {
-  margin: 25px;
-  padding: 30px
-}
-
 #card {
   width: 75%;
-  min-width: 510px;
-  margin: 100px auto;
 }
 
-mat-card-header,
-mat-card-content {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.EditButton{
-  margin-right: 10px;
-}.tableField {
-  margin: 100px;
-}
-
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-td,
-th {
-  width: 20%;
-}
-
-.addButton {
-  margin-bottom: 25px;
-}
-
-mat-card {
-  margin: 25px;
-  padding: 30px
-}
-
-#card {
-  width: 75%;
-  min-width: 510px;
-  margin: 100px auto;
-}
-
-mat-card-header,
-mat-card-content {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.EditButton:first-child{
+.EditButton:first-child {
   margin-left: 0px;
-}
-
-.EditButton{
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-table {
-  width: 100%;
 }
 
 tr.example-detail-row {
@@ -128,14 +41,6 @@ tr.example-element-row:not(.example-expanded-row):active {
   opacity: 0.5;
 }
 
-#align_end{
+#align_end {
   justify-content: flex-end;
-}
-
-mat-form-field{
-  width: 85%;
-}
-
-.addProductButton{
-  margin-top: 15px;
 }
