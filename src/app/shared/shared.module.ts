@@ -21,7 +21,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [],
@@ -43,7 +43,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatNativeDateModule,
     MatGridListModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ScrollingModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -62,8 +63,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatNativeDateModule,
     MatGridListModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ScrollingModule
   ]
-  
+
 })
 export class SharedModule { }

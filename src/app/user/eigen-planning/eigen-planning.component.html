@@ -1,61 +1,63 @@
 <div id="container">
   <h1>Uw levering van {{userLevering.schedule.datum | date:"dd/MM/yyyy"}}</h1>
   <h2>Omschrijving: {{userLevering.omschrijving}}</h2>
-  <mat-grid-list cols="4" rowHeight="200px">
-    <mat-grid-tile colspan="1" rowspan="2" style="background-color: lightblue;">
-      <mat-card class="dataCard">
-        <mat-card-header>
-          <mat-card-title>Uw gegevens</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div>Code:{{userLevering.leverancier.code}}</div>
-          <div>Bedrijf:{{userLevering.leverancier.bedrijf.naam}}</div>
-          <div *ngIf="userLevering.leverancier.nummerplaat != null">Nummerplaat:{{userLevering.leverancier.nummerplaat}}
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
+  <div class="gridlist">
+    <mat-grid-list cols="2" rowHeight="80px">
+      <mat-grid-tile colspan="1" rowspan="2">
+        <mat-card class="dataCard">
+          <mat-card-header>
+            <mat-card-title>Uw gegevens</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div>Code: {{userLevering.leverancier.code}}</div>
+            <div>Bedrijf: {{userLevering.leverancier.bedrijf.naam}}</div>
+            <div *ngIf="userLevering.leverancier.nummerplaat != null">
+              Nummerplaat: {{userLevering.leverancier.nummerplaat}}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
 
-    <mat-grid-tile colspan="3" rowspan="6" style="background-color: #DDBDF1">
-      <mat-card class="productCard">
-        <mat-card-header>
-          <mat-card-title>Producten</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-card class="productCards" *ngFor="let product of producten">
-              <mat-card-content>
-                {{product.naam}}
-              </mat-card-content>
-            </mat-card>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    
-    <mat-grid-tile colspan="1" rowspan="2" style="background-color: lightgreen;">
-      <mat-card class="dataCard">
-        <mat-card-header>
-          <mat-card-title>Laadkade</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div>
-            U bevindt zich aan laadkade {{userLevering.laadkade.nummer}} in {{userLevering.laadkade.locatie}}
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="2" style="background-color: lightpink;">
-      <mat-card class="dataCard">
-        <mat-card-header>
-          <mat-card-title>Planning</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div>
-            U bent ingepland door {{userLevering.schedule.user.naam}}
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-
-
-  </mat-grid-list>
+      <mat-grid-tile colspan="1" rowspan="6">
+        <mat-card class="productCard">
+          <mat-card-header>
+            <mat-card-title>Producten</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <cdk-virtual-scroll-viewport class="example-viewport" itemSize="60">
+              <mat-card class="productCards" *ngFor="let product of producten">
+                <mat-card-content>
+                  {{product.naam}}
+                </mat-card-content>
+              </mat-card>
+            </cdk-virtual-scroll-viewport>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="2">
+        <mat-card class="dataCard">
+          <mat-card-header>
+            <mat-card-title>Laadkade</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+              U bevindt zich aan laadkade {{userLevering.laadkade.nummer}} in {{userLevering.laadkade.locatie}}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="2">
+        <mat-card class="dataCard">
+          <mat-card-header>
+            <mat-card-title>Planning</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+              U bent ingepland door {{userLevering.schedule.user.naam}}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </div>
