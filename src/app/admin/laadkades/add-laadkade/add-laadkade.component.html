@@ -3,12 +3,13 @@
     <mat-card-content>
         <form [formGroup]="addLaadkadeForm" (ngSubmit)="onSubmit()">
             <div>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field class="formfield">
                     <mat-label>Nummer</mat-label>
-                    <input matInput type="text" formControlName="nummer" />
+                    <input matInput type="number" formControlName="nummer" />
                 </mat-form-field>
+                <control-messages [control]="addLaadkadeForm.get('nummer')" class="errorMessage"></control-messages>
             </div>
-            <button class="button" mat-raised-button color="primary" type="submit">Voeg laadkade toe</button>
+            <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!addLaadkadeForm.valid">Voeg laadkade toe</button>
         </form>
     </mat-card-content>
 </mat-card>

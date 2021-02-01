@@ -11,6 +11,7 @@ export class ValidationService {
       invalidPassword:
         'Invalid password. Password must be at least 6 characters long, and contain a number.',
       minlength: `Minimum lengte: ${validatorValue.requiredLength}`,
+      min: `Dit veld mag niet negatief zijn`
     };
 
     return config[validatorName];

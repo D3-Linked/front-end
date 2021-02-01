@@ -14,7 +14,7 @@ import { Laadkade } from '../../../models/laadkade.model';
 @Component({
   selector: 'app-laadkades',
   templateUrl: './laadkades.component.html',
-  styleUrls: ['./laadkades.component.scss', '../../../app.component.scss']
+  styleUrls: ['./laadkades.component.scss', '../../../app.component.scss', '../../admin_style.scss']
 })
 export class LaadkadesComponent implements OnInit {
 

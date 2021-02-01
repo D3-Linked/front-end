@@ -1,23 +1,23 @@
 <h1>Bewerk laadkade {{laadkade.nummer}}</h1>
 <mat-card id="card">
-    <mat-card-content>
-        <form [formGroup]="editLaadkadeForm" (ngSubmit)="onSubmit()">
-            <div>
-                <mat-form-field [style.width.px]=700>
-                    <mat-label>Nummer</mat-label>
-                    <input matInput type="text" formControlName="nummer" [(ngModel)]="laadkade.nummer"/>
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field [style.width.px]=700>
-                    
-                    <mat-slide-toggle [(ngModel)]="laadkade.isBezet" formControlName="isBezet">Kies of de laadkade bezet is</mat-slide-toggle>
-                    <input hidden matInput type="text"/>
-
-                </mat-form-field>
-            </div>
-            <button class="button" mat-raised-button color="primary" type="submit">Bewerk laadkade</button>
-        </form>
-    </mat-card-content>
+  <mat-card-content>
+    <form [formGroup]="editLaadkadeForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field class="formfield">
+          <mat-label>Nummer</mat-label>
+          <input matInput type="number" formControlName="nummer" [(ngModel)]="laadkade.nummer" />
+        </mat-form-field>
+        <control-messages [control]="editLaadkadeForm.get('nummer')" class="errorMessage"></control-messages>
+      </div>
+      <div>
+        <mat-form-field class="formfield">
+          <mat-slide-toggle [(ngModel)]="laadkade.isBezet" formControlName="isBezet">Kies of de laadkade bezet is
+          </mat-slide-toggle>
+          <input hidden matInput type="text" />
+        </mat-form-field>
+      </div>
+      <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!editLaadkadeForm.valid">Bewerk
+        laadkade</button>
+    </form>
+  </mat-card-content>
 </mat-card>

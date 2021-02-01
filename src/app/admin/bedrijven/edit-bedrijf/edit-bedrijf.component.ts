@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class EditBedrijfComponent implements OnInit {
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
   editBedrijfForm = this.fb.group({
-    naam: [''],
+    naam: ['', [Validators.minLength(2), Validators.required]],
   })
 
   id: number = 0;

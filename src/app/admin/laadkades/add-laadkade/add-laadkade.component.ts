@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { Router } from '@angular/router';
@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-laadkade',
   templateUrl: './add-laadkade.component.html',
-  styleUrls: ['./add-laadkade.component.scss']
+  styleUrls: ['./add-laadkade.component.scss', '../../admin_style.scss']
 })
 export class AddLaadkadeComponent implements OnInit {
 
   addLaadkadeForm = this.fb.group({
-    nummer: [''],
+    nummer: ['', [Validators.min(0), Validators.required]],
     isBezet: false
   })
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router) { }

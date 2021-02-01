@@ -15,6 +15,7 @@ export class ControlMessages {
 
   get errorMessage() {
     for (let propertyName in this.control.errors) {
+      console.log(propertyName);
       if (
         this.control.errors.hasOwnProperty(propertyName) &&
         this.control.touched

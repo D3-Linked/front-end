@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,14 +9,14 @@ import { Laadkade } from 'src/app/models/laadkade.model';
 @Component({
   selector: 'app-edit-laadkade',
   templateUrl: './edit-laadkade.component.html',
-  styleUrls: ['./edit-laadkade.component.scss']
+  styleUrls: ['./edit-laadkade.component.scss', '../../admin_style.scss']
 })
 export class EditLaadkadeComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
   isChecked = true;
   editLaadkadeForm = this.fb.group({
-    nummer: [''],
+    nummer: ['', [Validators.min(0), Validators.required]],
     isBezet: ['']
   })
 
