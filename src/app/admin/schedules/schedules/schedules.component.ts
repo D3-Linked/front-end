@@ -38,7 +38,6 @@ import { Product } from 'src/app/models/product.model';
 export class SchedulesComponent implements OnInit {
   schedules: Schedule[];
   displayedColumns: string[] = [
-    'code',
     'datum',
     'opmerking',
     'creator',

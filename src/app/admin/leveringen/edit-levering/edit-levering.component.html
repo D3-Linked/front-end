@@ -33,7 +33,7 @@
           <mat-label>Leverancier</mat-label>
           <mat-select [(ngModel)]="levering.leverancierID" formControlName="leverancierID">
             <mat-option *ngFor="let leverancier of leveranciers" [value]="leverancier.leverancierID">
-              {{leverancier.code}}
+              {{leverancier.code}} van bedrijf {{leverancier.bedrijf.naam}}
             </mat-option>
           </mat-select>
         </mat-form-field>

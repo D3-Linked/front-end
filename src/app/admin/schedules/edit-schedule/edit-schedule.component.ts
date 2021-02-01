@@ -25,7 +25,7 @@ export class EditScheduleComponent implements OnInit {
   users: User[];
 
   editScheduleForm = this.fb.group({
-    code: [''],
+    code: 0,
     datum: [''],
     opmerking: [''],
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID

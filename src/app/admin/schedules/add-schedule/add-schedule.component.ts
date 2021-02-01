@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddScheduleComponent implements OnInit {
 
   addScheduleForm = this.fb.group({
-    code: [''],
+    code: 0,
     datum: [''],
     opmerking: [''],
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID

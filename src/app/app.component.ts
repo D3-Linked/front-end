@@ -14,7 +14,7 @@ export class AppComponent {
   loggedUser: User = null;
 
   constructor(private router: Router, private appService: AppService){
-    localStorage.clear();
+    this.getLoggedUser();
   }
 
   getLoggedUser(){

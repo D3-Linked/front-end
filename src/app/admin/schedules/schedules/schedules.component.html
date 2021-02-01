@@ -11,12 +11,6 @@
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
 
-        <!-- Code Column -->
-        <ng-container matColumnDef="code">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
-          <td mat-cell *matCellDef="let row"> {{row.code}} </td>
-        </ng-container>
-
         <!-- Datum Column -->
         <ng-container matColumnDef="datum">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Datum </th>
