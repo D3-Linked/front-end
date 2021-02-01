@@ -13,7 +13,7 @@ import { Bedrijf } from '../../../models/bedrijf.model';
 @Component({
   selector: 'app-bedrijven',
   templateUrl: './bedrijven.component.html',
-  styleUrls: ['./bedrijven.component.scss', '../../../app.component.scss']
+  styleUrls: ['./bedrijven.component.scss', '../../../app.component.scss', '../../admin_style.scss']
 })
 export class BedrijvenComponent implements OnInit {
   bedrijven: Bedrijf[];

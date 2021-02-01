@@ -37,6 +37,9 @@ import { SchedulesComponent } from './schedules/schedules/schedules.component';
 import { AddScheduleComponent } from './schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './schedules/edit-schedule/edit-schedule.component';
 
+import { ControlMessages } from '../control-messages/control-messages.component';
+import { ValidationService } from '../control-messages/validation.service';
+
 const appRoutes: Routes = [
   { path: 'bedrijven', component: BedrijvenComponent },
   { path: 'addBedrijf', component: AddBedrijfComponent },
@@ -65,11 +68,14 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, BedrijvenComponent, AddBedrijfComponent, EditBedrijfComponent, LaadkadesComponent, AddLaadkadeComponent, EditLaadkadeComponent, LeveranciersComponent, AddLeverancierComponent, EditLEverancierComponent, LeveringenComponent, AddLeveringComponent, EditLeveringComponent, ProductenComponent, AddProductComponent, EditProductComponent, RollenComponent, AddRolComponent, EditRolComponent, UsersComponent, AddUserComponent, EditUserComponent, SchedulesComponent, AddScheduleComponent, EditScheduleComponent],
+  declarations: [AdminComponent, BedrijvenComponent, AddBedrijfComponent, EditBedrijfComponent, LaadkadesComponent, AddLaadkadeComponent, EditLaadkadeComponent, LeveranciersComponent, AddLeverancierComponent, EditLEverancierComponent, LeveringenComponent, AddLeveringComponent, EditLeveringComponent, ProductenComponent, AddProductComponent, EditProductComponent, RollenComponent, AddRolComponent, EditRolComponent, UsersComponent, AddUserComponent, EditUserComponent, SchedulesComponent, AddScheduleComponent, EditScheduleComponent, ControlMessages],
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
     SharedModule
+  ],
+  providers: [
+    ValidationService
   ]
 })
 export class AdminModule { }

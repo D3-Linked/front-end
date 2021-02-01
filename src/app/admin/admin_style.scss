@@ -1,0 +1,50 @@
+h1 {
+  margin: 45px
+}
+
+.formfield {
+  width: 42vw;
+  max-width: 700px;
+  margin-bottom: -10px;
+}
+
+#card {
+  min-width: 510px;
+  margin: 100px auto;
+  padding: 30px
+}
+
+mat-card-header,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.errorMessage {
+  color: red;
+  text-align: left;
+}
+
+.button{
+  margin-top: 15px;
+}
+
+#filter {
+  font-size: 14px;
+  width: 100%;
+}
+
+.EditButton{
+  margin-right: 10px;
+}
+
+.addButton {
+  margin-bottom: 25px;
+}
+
+td,
+th {
+    width: 20%;
+}
+

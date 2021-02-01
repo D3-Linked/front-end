@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 
 import { Router } from '@angular/router';
@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-bedrijf',
   templateUrl: './add-bedrijf.component.html',
-  styleUrls: ['./add-bedrijf.component.scss']
+  styleUrls: ['./add-bedrijf.component.scss', '../../admin_style.scss']
 })
 export class AddBedrijfComponent implements OnInit {
   addBedrijfForm = this.fb.group({
-    naam: [''],
+    naam: ['', [Validators.minLength(2), Validators.required]],
   })
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router) { }
 

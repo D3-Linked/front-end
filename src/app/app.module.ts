@@ -23,7 +23,7 @@ import { AdminComponent } from '../app/admin/admin/admin.component';
 import { UserModule } from '../app/user/user.module';
 import { TableComponent } from './user/table/table.component';
 
-import {PlanningComponent} from './planning-admin/planning/planning.component'
+import { PlanningComponent } from './planning-admin/planning/planning.component';
 import { PlanningAdminModule } from './planning-admin/planning-admin.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -35,9 +35,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,14 +48,15 @@ const appRoutes: Routes = [
     AdminModule,
     UserModule,
     PlanningAdminModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: SecurityInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SecurityInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}

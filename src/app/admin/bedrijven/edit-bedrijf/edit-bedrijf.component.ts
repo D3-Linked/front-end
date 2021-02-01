@@ -9,7 +9,7 @@ import { Bedrijf } from 'src/app/models/bedrijf.model';
 @Component({
   selector: 'app-edit-bedrijf',
   templateUrl: './edit-bedrijf.component.html',
-  styleUrls: ['./edit-bedrijf.component.scss']
+  styleUrls: ['./edit-bedrijf.component.scss', '../../admin_style.scss']
 })
 export class EditBedrijfComponent implements OnInit {
 
