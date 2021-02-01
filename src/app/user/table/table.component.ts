@@ -11,11 +11,20 @@ declare var Jquery: any;
 export class TableComponent implements OnInit {
 
   constructor() {
-
+    
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('reload')) { 
+      localStorage.setItem('reload', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('reload') 
+    }
+  }
 
+  reload(){
+    location.reload();
   }
 
 }

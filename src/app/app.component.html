@@ -2,19 +2,19 @@
   <mat-sidenav-container class="nav-container">
       <mat-sidenav class="sidenav" mode="side" opened="true" color="primary">
           <mat-nav-list>
-            <a mat-list-item class="nav-item" *ngIf="loggedUser==null">Guest</a>
-            <a mat-list-item class="nav-item" *ngIf="loggedUser!=null">{{loggedUser.naam}}</a>
+            <a mat-list-item class="nav-item" *ngIf="loggedUser==null"><mat-icon aria-hidden="false" color="accent" >account_circle</mat-icon> Guest</a>
+            <a mat-list-item class="nav-item" *ngIf="loggedUser!=null"><mat-icon aria-hidden="false" color="accent">account_circle</mat-icon> {{loggedUser.naam}}</a>
             <a mat-list-item class="nav-item" routerLink="/login" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }" *ngIf="loggedUser==null">Login</a>
+                [routerLinkActiveOptions]="{ exact: true }" *ngIf="loggedUser==null"><mat-icon color="accent" aria-hidden="false">login</mat-icon> Login</a>
                 <a mat-list-item class="nav-item" routerLink="" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                [routerLinkActiveOptions]="{ exact: true }"><mat-icon aria-hidden="false" color="accent" >home</mat-icon> Home</a>
             <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==3" routerLink="/table" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">Table</a>
+                [routerLinkActiveOptions]="{ exact: true }"><mat-icon aria-hidden="false" color="accent">dashboard</mat-icon> Dashboard</a>
             <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==3" routerLink="/admin" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">Admin</a>
+                [routerLinkActiveOptions]="{ exact: true }"><mat-icon aria-hidden="false" color="accent">admin_panel_settings</mat-icon> Admin</a>
             <a mat-list-item class="nav-item" *ngIf="loggedUser != null && loggedUser.roleID==2" routerLink="/planningAdmin" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">Planning</a>
-                <a mat-list-item class="nav-item" *ngIf="loggedUser!=null" (click)="onLogout()">Logout</a>
+                [routerLinkActiveOptions]="{ exact: true }"><mat-icon aria-hidden="false" color="accent">calendar_today</mat-icon> Planning</a>
+                <a mat-list-item class="nav-item" *ngIf="loggedUser!=null" (click)="onLogout()"><mat-icon color="accent" aria-hidden="false">logout</mat-icon> Logout</a>
           </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
