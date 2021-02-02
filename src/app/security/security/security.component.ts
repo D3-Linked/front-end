@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthenticateService} from '../services/authenticate.service';
+import { AuthenticateService } from '../services/authenticate.service';
 import { UserLogin } from '../../models/user-login.model';
 
 import { Router } from '@angular/router';
 
-import { AppService} from '../../app.service';
+import { AppService } from '../../app.service';
 import { AppComponent } from 'src/app/app.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-security',
@@ -15,9 +16,9 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class SecurityComponent implements OnInit {
 
-  constructor(private _authenticateService: AuthenticateService, private router: Router, private appService: AppService, private AppComponent: AppComponent) { }
+  constructor(private _authenticateService: AuthenticateService, private router: Router, private appService: AppService, private AppComponent: AppComponent, private _snackBar: MatSnackBar) { }
 
-  submitted:boolean=false;
+  submitted: boolean = false;
   userLogin: UserLogin = new UserLogin('', '');
 
   ngOnInit(): void {
@@ -27,6 +28,14 @@ export class SecurityComponent implements OnInit {
     }
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+      horizontalPosition: "center",
+      verticalPosition: "top",
+    });
+  }
+
   onSubmit() {
     this.submitted = true;
     this._authenticateService.authenticate(this.userLogin).subscribe(result => {
@@ -34,6 +43,9 @@ export class SecurityComponent implements OnInit {
       this.AppComponent.getLoggedUser();
       localStorage.setItem("token", result.token);
       this.router.navigate(['/']);
+    }, error => {
+      this.openSnackBar("Verkeerde email of paswoord", "OK");
     });
+
   }
 }

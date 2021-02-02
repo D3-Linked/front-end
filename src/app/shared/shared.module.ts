@@ -6,24 +6,25 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ControlMessages } from '../control-messages/control-messages.component';
 import { ValidationService } from '../control-messages/validation.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [ControlMessages],
@@ -46,7 +47,8 @@ import { ValidationService } from '../control-messages/validation.service';
     MatGridListModule,
     MatTabsModule,
     MatExpansionModule,
-    ScrollingModule
+    ScrollingModule,
+    MatSnackBarModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -67,9 +69,9 @@ import { ValidationService } from '../control-messages/validation.service';
     MatTabsModule,
     MatExpansionModule,
     ScrollingModule,
-    ControlMessages
+    ControlMessages,
+    MatSnackBarModule,
   ],
-  providers: [ValidationService]
-
+  providers: [ValidationService],
 })
-export class SharedModule { }
+export class SharedModule {}

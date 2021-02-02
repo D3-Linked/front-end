@@ -10,7 +10,7 @@ import { AppService } from './app.service';
 })
 export class AppComponent {
   title = 'application-frontend';
-
+  currentDate = new Date().getFullYear();
   loggedUser: User = null;
 
   constructor(private router: Router, private appService: AppService){
@@ -20,7 +20,7 @@ export class AppComponent {
   getLoggedUser(){
     this.loggedUser = this.appService.getLoggedUser();
   }
-
+  
   onLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("LoggedUser");
