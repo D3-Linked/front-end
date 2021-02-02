@@ -9,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 
 import { Levering } from '../../../models/levering.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-leveringen',

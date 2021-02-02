@@ -19,11 +19,16 @@ import {
   trigger,
 } from '@angular/animations';
 import { Product } from 'src/app/models/product.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-schedules',
   templateUrl: './schedules.component.html',
-  styleUrls: ['./schedules.component.scss', '../../../app.component.scss', '../../admin_style.scss'],
+  styleUrls: [
+    './schedules.component.scss',
+    '../../../app.component.scss',
+    '../../admin_style.scss',
+  ],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -49,7 +54,11 @@ export class SchedulesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _adminService: AdminService, private route: Router) {}
+  constructor(
+    private _adminService: AdminService,
+    private route: Router,
+    private snackbar: MatSnackBar
+  ) {}
 
   leveringen: Levering[] = null;
   producten: Product[] = null;
@@ -75,11 +84,11 @@ export class SchedulesComponent implements OnInit {
     return this.leveringen;
   }
 
-  viewProducts(id: number){
+  viewProducts(id: number) {
     this.getProductenByLeveringID(id);
   }
 
-  hideProducts(){
+  hideProducts() {
     this.producten = null;
   }
 
@@ -105,9 +114,22 @@ export class SchedulesComponent implements OnInit {
   }
 
   deleteSchedule(id: number) {
-    this._adminService
-      .deleteSchedule(id)
-      .subscribe((result) => this.getSchedules());
+    this._adminService.deleteSchedule(id).subscribe(
+      (result) => {
+        this.getSchedules();
+      },
+      (error) => {
+        this.snackbar.open(
+          'Deze planning kan niet verwijderd worden, er zijn nog leveringen voor deze planning',
+          'OK',
+          {
+            duration: 3500,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          }
+        );
+      }
+    );
   }
 
   editSchedule(id: number) {
