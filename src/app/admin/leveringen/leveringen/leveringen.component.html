@@ -26,7 +26,7 @@
         <!-- schedule Column -->
         <ng-container matColumnDef="schedule">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Schedule </th>
-            <td mat-cell *matCellDef="let row"> {{row.schedule.datum}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.schedule.datum | date:'dd/MM/yyyy @ HH:mm'}} </td>
         </ng-container>
 
         <!-- leverancier Column -->

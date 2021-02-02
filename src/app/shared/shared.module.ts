@@ -20,8 +20,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -44,7 +45,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatGridListModule,
     MatTabsModule,
     MatExpansionModule,
-    ScrollingModule
+    ScrollingModule,
+    MatSnackBarModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -64,7 +66,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatGridListModule,
     MatTabsModule,
     MatExpansionModule,
-    ScrollingModule
+    ScrollingModule,
+    MatSnackBarModule
   ]
 
 })

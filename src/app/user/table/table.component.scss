@@ -66,41 +66,43 @@ mat-grid-list{
 	margin-right: 23px;
 }
 
-.grid-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1.1fr 1.1fr 0.8fr;
-	gap: 0px 0px;
-	grid-template-areas:
-	  "leveringen laadkade-status laadkade-bedrijf datum-filter filter"
-	  "barchart-product barchart-product informatie-bedrijf informatie-bedrijf filter"
-	  "barchart-laadkade barchart-laadkade barchart-laadkade barchart-laadkade filter";
-  }
-  .filter1{
+.filter1{
 	  margin: auto;
   }
-  .filter2{
+.filter2{
 	  margin: auto;
 	  vertical-align: auto;
 	  position: relative;
 	  width: 371px;
 	  left: 25%;
   }
-  .leveringen { grid-area: leveringen; }
+ 
   
-  .laadkade-status { grid-area: laadkade-status; }
+  .grid-container {
+	background-color:  lighten($color: #eaee0c1e, $amount: 25);
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: 0px 0px;
+	grid-template-areas:
+	  "levering-bedrijf levering-bedrijf laadkade toegeweze-laadkade filter"
+	  "bezetting bezetting afgewerkte-lev datum filter"
+	  "producten producten producten producten filter";
+  }
   
-  .laadkade-bedrijf { grid-area: laadkade-bedrijf; }
+  .levering-bedrijf { grid-area: levering-bedrijf; }
   
-  .filter { grid-area: filter; background-color: #8c9eff; }
+  .laadkade { grid-area: laadkade; }
   
-  .barchart-product { grid-area: barchart-product; }
+  .toegeweze-laadkade { grid-area: toegeweze-laadkade; }
   
-  .barchart-laadkade { grid-area: barchart-laadkade; }
+  .datum { grid-area: datum; }
   
-  .informatie-bedrijf { grid-area: informatie-bedrijf; }
+  .filter { grid-area: filter; background-color: #8c9eff;}
   
-  .datum-filter { grid-area: datum-filter; }
+  .afgewerkte-lev { grid-area: afgewerkte-lev; }
   
+  .bezetting { grid-area: bezetting; }
   
+  .producten { grid-area: producten; }
   

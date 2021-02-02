@@ -40,22 +40,22 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="min-width: 70%; min-height: 50px; background-color: #536dfe;">
             <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Bekijk uw levering
+                <mat-panel-title style="color: white;">
+                    <u>  BEKIJK UW LEVERING </u>
                 </mat-panel-title>
-                <mat-panel-description>
-                    {{panelOpenState ? 'Vul hier uw code in die u heeft gekregen.' : 'Klik hier'}}
+                <mat-panel-description style="color: white;">
+                    {{panelOpenState ? 'Vul hier uw code in die u heeft gekregen.' : 'KLIK HIER'}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <form  >
                 <mat-form-field>
-                    <mat-label>Vul hier uw code in</mat-label>
-                    <input matInput placeholder="Ex. 1234" [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
+                    <mat-label style="color: white;">Vul hier uw code in</mat-label>
+                    <input style="color: white;" matInput placeholder="Ex. 1234" [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
                 <br>
-                <button class="button" (click)="goTo(code)" mat-raised-button color="primary" type="submit">Zoek uw levering op</button>
+                <button class="button" (click)="goTo(code)" mat-raised-button color="white" type="submit">Zoek uw levering op</button>
             </form>
         </mat-expansion-panel>
     </mat-grid-tile>
