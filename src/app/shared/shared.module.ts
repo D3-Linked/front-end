@@ -22,9 +22,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ControlMessages } from '../control-messages/control-messages.component';
+import { ValidationService } from '../control-messages/validation.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [ControlMessages],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -64,8 +66,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatGridListModule,
     MatTabsModule,
     MatExpansionModule,
-    ScrollingModule
-  ]
+    ScrollingModule,
+    ControlMessages
+  ],
+  providers: [ValidationService]
 
 })
 export class SharedModule { }

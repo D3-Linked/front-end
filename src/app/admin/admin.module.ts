@@ -68,14 +68,11 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, BedrijvenComponent, AddBedrijfComponent, EditBedrijfComponent, LaadkadesComponent, AddLaadkadeComponent, EditLaadkadeComponent, LeveranciersComponent, AddLeverancierComponent, EditLEverancierComponent, LeveringenComponent, AddLeveringComponent, EditLeveringComponent, ProductenComponent, AddProductComponent, EditProductComponent, RollenComponent, AddRolComponent, EditRolComponent, UsersComponent, AddUserComponent, EditUserComponent, SchedulesComponent, AddScheduleComponent, EditScheduleComponent, ControlMessages],
+  declarations: [AdminComponent, BedrijvenComponent, AddBedrijfComponent, EditBedrijfComponent, LaadkadesComponent, AddLaadkadeComponent, EditLaadkadeComponent, LeveranciersComponent, AddLeverancierComponent, EditLEverancierComponent, LeveringenComponent, AddLeveringComponent, EditLeveringComponent, ProductenComponent, AddProductComponent, EditProductComponent, RollenComponent, AddRolComponent, EditRolComponent, UsersComponent, AddUserComponent, EditUserComponent, SchedulesComponent, AddScheduleComponent, EditScheduleComponent],
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
     SharedModule
-  ],
-  providers: [
-    ValidationService
   ]
 })
 export class AdminModule { }
