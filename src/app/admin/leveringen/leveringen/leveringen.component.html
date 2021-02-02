@@ -35,6 +35,12 @@
             <td mat-cell *matCellDef="let row"> {{row.leverancier.code}} </td>
         </ng-container>
 
+        <!-- nummerplaat Column -->
+        <ng-container matColumnDef="nummerplaat">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nummerplaat Leverancier </th>
+            <td mat-cell *matCellDef="let row"> {{row.leverancier.nummerplaat}} </td>
+        </ng-container>
+
          <!-- bedrijf Column -->
          <ng-container matColumnDef="bedrijf">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Bedrijf </th>

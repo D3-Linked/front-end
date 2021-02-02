@@ -18,7 +18,7 @@ import { Levering } from '../../../models/levering.model';
 export class LeveringenComponent implements OnInit {
 
   leveringen: Levering[];
-  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'bedrijf', 'deleteLevering'];
+  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'nummerplaat', 'bedrijf', 'deleteLevering'];
   dataSource: MatTableDataSource<Levering>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

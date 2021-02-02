@@ -31,6 +31,7 @@ export class EditLeveringComponent implements OnInit {
     laadkadeID: ['', Validators.required],
     scheduleID: ['', Validators.required],
     leverancierID: ['', Validators.required],
+    isCompleet: ['']
   });
 
   id: number = 0;
