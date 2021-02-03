@@ -17,7 +17,7 @@ import { Bedrijf } from '../../../models/bedrijf.model';
 })
 export class BedrijvenComponent implements OnInit {
   bedrijven: Bedrijf[];
-  displayedColumns: string[] = ['naam', 'deleteBedrijf'];
+  displayedColumns: string[] = ['naam', 'adres', 'btwNummer', 'email', 'deleteBedrijf'];
   dataSource: MatTableDataSource<Bedrijf>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -50,12 +50,10 @@ export class BedrijvenComponent implements OnInit {
     }
   }
 
-  //Navigate to add journalist page
   addBedrijf() {
     this.route.navigate(['/addBedrijf']);
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
   deleteBedrijf(id: number) {
     this._adminService.deleteBedrijf(id).subscribe(
       result => this.getBedrijven()

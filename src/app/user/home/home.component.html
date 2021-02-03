@@ -1,6 +1,6 @@
 <mat-grid-list cols="2" rowHeight="500px" width="2000px;">
     <mat-grid-tile colspan=2>
-        <img src="assets/logistiek.jpg" alt="header-logistiek">  
+        <img src="assets/logistiek.jpg" alt="header-logistiek">
     </mat-grid-tile>
 </mat-grid-list>
 <mat-grid-list cols="2" rowHeight="300px" width="2000px;">
@@ -8,7 +8,7 @@
         <mat-card id="card">
             <mat-card-title>Onze socialmedia</mat-card-title>
             <mat-card-content>
-                Heb je interesse in wat wij doen of wil je meer weten over ons ? Volg ons dan gerust even op social media waar wij regelmatig de laatste nieuwtjes posten. 
+                Heb je interesse in wat wij doen of wil je meer weten over ons ? Volg ons dan gerust even op social media waar wij regelmatig de laatste nieuwtjes posten.
             </mat-card-content>
             <mat-card-actions>
                 <a href="https://twitter.com/IAbdelmalki"><button mat-button>Twitter</button></a>
@@ -25,7 +25,8 @@
         <mat-card id="card">
             <mat-card-title>Hoe bekijk ik mijn levering</mat-card-title>
             <mat-card-content>
-                Alle details over je levering bekijken ? Dit kan vanaf nu heel simpel met je leveringscode. Hier leggen we stap voor stap uit hoe je dit doet! hieronder zie je een vakje met 'Bekijk u levering' klik hier op 'Klik hier' en vul de correcte leveringscode in. Dan ga je doorgestuurd worden naar een pagina met alle details. Heb je nog vragen ? of heb je de leveringscode niet, aarzel niet om contact met ons op te nemen op: 014 12 34 56
+                Alle details over je levering bekijken ? Dit kan vanaf nu heel simpel met je leveringscode. Hier leggen we stap voor stap uit hoe je dit doet! hieronder zie je een vakje met 'Bekijk u levering' klik hier op 'Klik hier' en vul de correcte leveringscode
+                in. Dan ga je doorgestuurd worden naar een pagina met alle details. Heb je nog vragen ? of heb je de leveringscode niet, aarzel niet om contact met ons op te nemen op: 014 12 34 56
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -34,7 +35,8 @@
         <mat-card id="card">
             <mat-card-title>Wat doet linked</mat-card-title>
             <mat-card-content>
-                Wat doen wij ? Wij als linked bieden een alround IT service voor logistieke bedrijven. Wij bieden een kant en klaar systeem aan dat het laden en lossen van goederen vergemakkelijkt en versneld op basis van nummerplaatherkenning en een automatische planning. Wij staan in voor een betrouwbare en uitbreidbaare service, die steeds up to date is met de laatste nieuwtjes.
+                Wat doen wij ? Wij als linked bieden een alround IT service voor logistieke bedrijven. Wij bieden een kant en klaar systeem aan dat het laden en lossen van goederen vergemakkelijkt en versneld op basis van nummerplaatherkenning en een automatische planning.
+                Wij staan in voor een betrouwbare en uitbreidbaare service, die steeds up to date is met de laatste nieuwtjes.
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -43,22 +45,30 @@
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="min-width: 70%; min-height: 50px; background-color: #536dfe;">
             <mat-expansion-panel-header>
                 <mat-panel-title style="color: white;">
-                    <u>  BEKIJK UW LEVERING </u>
+                    <u> BEKIJK UW LEVERING </u>
                 </mat-panel-title>
                 <mat-panel-description style="color: white;">
                     {{panelOpenState ? 'Vul hier uw code in die u heeft gekregen.' : 'KLIK HIER'}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <form  >
-                <mat-form-field>
-                    <mat-label style="color: white;">Vul hier uw code in</mat-label>
-                    <input style="color: white;" matInput placeholder="Ex. 1234" [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
-                </mat-form-field>
+            <form>
+                <div>
+                    <mat-form-field>
+                        <mat-label style="color: white;">Vul hier uw code in</mat-label>
+                        <input style="color: white;" matInput placeholder="Ex. 1234" [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label style="color: white;">Vul hier uw nummerplaat in</mat-label>
+                        <input style="color: white;" matInput placeholder="Ex. 1abc123" [(ngModel)]="nummerplaat" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                </div>
                 <br>
-                <button class="button" (click)="goTo(code)" mat-raised-button color="white" type="submit">Zoek uw levering op</button>
+                <button class="button" (click)="goTo(code, nummerplaat)" mat-raised-button color="white" type="submit">Zoek uw levering
+          op</button>
             </form>
         </mat-expansion-panel>
     </mat-grid-tile>
 
 </mat-grid-list>
-   

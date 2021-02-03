@@ -10,7 +10,8 @@ import { UserService } from '../user.service';
   styleUrls: ['./eigen-planning.component.scss'],
 })
 export class EigenPlanningComponent implements OnInit {
-  id: number = 0;
+  code: number = 0;
+  nummerplaat: string= "";
   userLevering: Levering;
   producten: Product[];
 
@@ -22,16 +23,28 @@ export class EigenPlanningComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
-      this.id = params['id'];
+      this.code = params['code'];
+      this.nummerplaat = params['nummerplaat'];
     });
     this.search();
   }
 
   search() {
-    this._userService.getPlanning(this.id).subscribe(
+    this._userService.getPlanning(this.code, this.nummerplaat).subscribe(
       (data) => {
+        console.log(data);
+        data.forEach(levering => {
+          console.log(levering);
+          console.log("datum database");
+          console.log(new Date(levering.schedule.datum).getDate());
+          console.log("datum now");
+          console.log(new Date().getDate());
+          if (levering.schedule.datum.getDate() == new Date().getDate()){
+            console.log("today!");
+          }
+        });
+
         this.userLevering = data[0];
-        console.log(data[0]);
         this.loadProducts(this.userLevering.leveringID);
       },
       (error) => {

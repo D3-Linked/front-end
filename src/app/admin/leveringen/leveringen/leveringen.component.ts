@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LeveringenComponent implements OnInit {
 
   leveringen: Levering[];
-  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'bedrijf', 'deleteLevering'];
+  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'bedrijf', 'status', 'deleteLevering'];
   dataSource: MatTableDataSource<Levering>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

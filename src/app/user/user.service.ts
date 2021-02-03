@@ -15,8 +15,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
   baseUrl = environment.baseUrl
 
-  getPlanning(id: number): Observable<Levering>{
-    return this.http.get<Levering>(this.baseUrl + "leveringen/code/" + id)
+  getPlanning(id: number, nummerplaat:string): Observable<Levering[]>{
+    return this.http.get<Levering[]>(this.baseUrl + "leveringen/code/" + id + "/nummerplaat/" + nummerplaat)
   }
 
   getProductenByLeveringId(id:number): Observable<Product[]>{

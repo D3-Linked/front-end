@@ -11,15 +11,16 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   panelOpenState = false;
   public code: number;
+  public nummerplaat: string;
 
   constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
-  goTo(id: number) {
-    this.route.navigate(['/userlevering'], { queryParams: { id }});
+  goTo(code: number, nummerplaat: string) {
+    this.route.navigate(['/userlevering'], { queryParams: { code, nummerplaat }});
   }
-  
+
 }
 
 
