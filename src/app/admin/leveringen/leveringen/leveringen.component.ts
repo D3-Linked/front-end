@@ -9,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 
 import { Levering } from '../../../models/levering.model';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-leveringen',
@@ -24,6 +25,14 @@ export class LeveringenComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+
+  get fromDate() { return this.range.get('start').value; }
+  get toDate() { return this.range.get('end').value; }
+
   constructor(private _adminService: AdminService, private route: Router) { }
 
   ngOnInit(): void {
@@ -37,6 +46,13 @@ export class LeveringenComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.leveringen);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.dataSource.filterPredicate = (data, filter) =>{
+          console.log("hallo")
+          if (this.fromDate && this.toDate) {
+            return data.schedule.datum >= this.fromDate && data.schedule.datum <= this.toDate;
+          }
+          return true;
+        }
       }
     );
   }
@@ -64,7 +80,7 @@ export class LeveringenComponent implements OnInit {
   }
 
   editLevering(id: number) {
-    this.route.navigate(['/editLevering'], { queryParams: { id }});
+    this.route.navigate(['/editLevering'], { queryParams: { id } });
   }
 
 }
