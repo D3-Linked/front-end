@@ -14,7 +14,7 @@ export class AddUserComponent implements OnInit {
 
   addGebruikerForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     paswoord: ['', [Validators.required, Validators.minLength(5)]],
     token: null,
     roleID: ['', Validators.required]

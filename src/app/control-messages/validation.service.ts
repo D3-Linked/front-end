@@ -9,7 +9,8 @@ export class ValidationService {
       required: 'Dit veld is verplicht',
       email: 'Dit is geen geldig email adres',
       minlength: `Minimum lengte: ${validatorValue.requiredLength}`,
-      min: `Dit veld mag niet negatief zijn`
+      min: `Dit veld mag niet negatief zijn`,
+      pattern: 'Dit geen geldig email adres'
     };
 
     return config[validatorName];

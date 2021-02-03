@@ -8,8 +8,28 @@
           <input matInput type="text" formControlName="naam" [(ngModel)]="bedrijf.naam" />
         </mat-form-field>
         <control-messages [control]="editBedrijfForm.get('naam')" class="errorMessage"></control-messages>
+
+        <mat-form-field class="formfield">
+          <mat-label>Adres</mat-label>
+          <input matInput type="text" formControlName="adres" [(ngModel)]="bedrijf.adres" />
+        </mat-form-field>
+        <control-messages [control]="editBedrijfForm.get('adres')" class="errorMessage"></control-messages>
+
+        <mat-form-field class="formfield">
+          <mat-label>BTW-Nummer</mat-label>
+          <input matInput type="text" formControlName="btwNummer" [(ngModel)]="bedrijf.btwNummer" />
+        </mat-form-field>
+        <control-messages [control]="editBedrijfForm.get('btwNummer')" class="errorMessage"></control-messages>
+
+        <mat-form-field class="formfield">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" [(ngModel)]="bedrijf.email" />
+        </mat-form-field>
+        <control-messages [control]="editBedrijfForm.get('email')" class="errorMessage"></control-messages>
+
       </div>
-      <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!editBedrijfForm.valid">Bewerk bedrijf</button>
+      <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!editBedrijfForm.valid">Bewerk
+        bedrijf</button>
     </form>
   </mat-card-content>
 </mat-card>
