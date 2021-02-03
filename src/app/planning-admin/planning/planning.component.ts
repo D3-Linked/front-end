@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Laadkade } from 'src/app/models/laadkade.model';
 import { Leverancier } from 'src/app/models/leverancier.model';
 import { Levering } from 'src/app/models/levering.model';
@@ -33,21 +33,21 @@ export class PlanningComponent implements OnInit {
 
   addScheduleForm = this.fb.group({
     code: 0,
-    datum: [''],
+    datum: ['', Validators.required],
     opmerking: [''],
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID,
   });
 
   addLeveringForm = this.fb.group({
     omschrijving: [''],
-    laadkadeID: [''],
+    laadkadeID: ['', Validators.required],
     scheduleID: [''],
-    leverancierID: [''],
-    //isCompleet: false,
+    leverancierID: ['', Validators.required],
+    isCompleet: false,
   });
 
   addProductForm = this.fb.group({
-    naam: [''],
+    naam: ['', [Validators.required, Validators.minLength(2)]],
     leveringID: [''],
   });
 
@@ -114,6 +114,10 @@ export class PlanningComponent implements OnInit {
       this.addScheduleForm.value['datum']
     );
 
+    if (this.addScheduleForm.value['opmerking'] == '') {
+      this.addScheduleForm.value['opmerking'] = 'Geen opmerkingen';
+    }
+
     this.planningService
       .addSchedule(this.addScheduleForm.value)
       .subscribe((result) => {
@@ -139,6 +143,10 @@ export class PlanningComponent implements OnInit {
       this.addLeveringForm.value['leverancierID']
     );
 
+    if (this.addLeveringForm.value['omschrijving'] == '') {
+      this.addLeveringForm.value['omschrijving'] = 'Geen omschrijving gegeven';
+    }
+
     this.planningService
       .addLevering(this.addLeveringForm.value)
       .subscribe((result) => {
@@ -159,12 +167,12 @@ export class PlanningComponent implements OnInit {
     this.addProductForm.reset();
   }
 
-  makeNewLevering(){
+  makeNewLevering() {
     this.addLeveringForm.reset();
     this.leveringAdded = false;
   }
 
-  scheduleReady(){
+  scheduleReady() {
     this.selectedTab = 0;
   }
 }

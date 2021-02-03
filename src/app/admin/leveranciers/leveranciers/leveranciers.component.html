@@ -20,22 +20,25 @@
         <!-- Code Column -->
         <ng-container matColumnDef="nummerplaat">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nummerplaat </th>
-          <td mat-cell *matCellDef="let row"> {{row.nummerplaat}} </td>
+          <td mat-cell *matCellDef="let row">
+            <div *ngIf="row.nummerplaat != null">{{row.nummerplaat}}</div>
+            <div *ngIf="row.nummerplaat == null">Nummerplaat ongekend</div>
+          </td>
         </ng-container>
 
         <!-- Bedrijf Column -->
         <ng-container matColumnDef="bedrijf">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Bedrijf </th>
-            <td mat-cell *matCellDef="let row"> {{row.bedrijf.naam}} </td>
-          </ng-container>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Bedrijf </th>
+          <td mat-cell *matCellDef="let row"> {{row.bedrijf.naam}} </td>
+        </ng-container>
 
         <!-- Delete leverancier Column -->
         <ng-container matColumnDef="deleteLeverancier">
           <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-          <td mat-cell *matCellDef="let row"> <button (click)="editLeverancier(row.leverancierID)" class="EditButton" mat-raised-button
-              color="primary">BEWERK</button>
-              <button (click)="deleteLeverancier(row.leverancierID)" mat-raised-button
-              color="accent">VERWIJDER</button> </td>
+          <td mat-cell *matCellDef="let row"> <button (click)="editLeverancier(row.leverancierID)" class="EditButton"
+              mat-raised-button color="primary">BEWERK</button>
+            <button (click)="deleteLeverancier(row.leverancierID)" mat-raised-button color="accent">VERWIJDER</button>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

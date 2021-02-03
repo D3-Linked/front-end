@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 
 import { Levering } from '../../../models/levering.model';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-leveringen',
@@ -19,7 +21,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class LeveringenComponent implements OnInit {
 
   leveringen: Levering[];
-  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'nummerplaat', 'bedrijf', 'deleteLevering'];
+  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'bedrijf', 'deleteLevering'];
   dataSource: MatTableDataSource<Levering>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
