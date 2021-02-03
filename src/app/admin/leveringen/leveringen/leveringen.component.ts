@@ -11,17 +11,29 @@ import { Router } from '@angular/router';
 import { Levering } from '../../../models/levering.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-leveringen',
   templateUrl: './leveringen.component.html',
-  styleUrls: ['./leveringen.component.scss', '../../../app.component.scss', '../../admin_style.scss']
+  styleUrls: [
+    './leveringen.component.scss',
+    '../../../app.component.scss',
+    '../../admin_style.scss',
+  ],
 })
 export class LeveringenComponent implements OnInit {
-
   leveringen: Levering[];
-  displayedColumns: string[] = ['omschrijving', 'laadkade', 'schedule', 'leverancier', 'bedrijf', 'status', 'deleteLevering'];
+  leveringenByDate: Levering[];
+  displayedColumns: string[] = [
+    'omschrijving',
+    'laadkade',
+    'schedule',
+    'leverancier',
+    'bedrijf',
+    'status',
+    'deleteLevering',
+  ];
   dataSource: MatTableDataSource<Levering>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -29,34 +41,65 @@ export class LeveringenComponent implements OnInit {
 
   range = new FormGroup({
     start: new FormControl(),
-    end: new FormControl()
+    end: new FormControl(),
   });
 
-  get fromDate() { return this.range.get('start').value; }
-  get toDate() { return this.range.get('end').value; }
+  get fromDate() {
+    return this.range.get('start').value;
+  }
+  get toDate() {
+    return this.range.get('end').value;
+  }
 
-  constructor(private _adminService: AdminService, private route: Router) { }
+  startDate: string;
+  endDate: string;
+
+  constructor(
+    private _adminService: AdminService,
+    private route: Router,
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit(): void {
     this.getLeveringen();
   }
 
-  getLeveringen() {
-    this._adminService.getLeveringen().subscribe(
-      result => {
+  getLeveringenByDateRange() {
+    this.startDate = this.datePipe.transform(
+      new Date(this.fromDate),
+      'yyyy-MM-ddThh:mm:ss.SSS'
+    );
+    this.endDate = this.datePipe.transform(
+      new Date(this.toDate),
+      'yyyy-MM-ddThh:mm:ss.SSS'
+    );
+    this._adminService
+      .getLeveringenByDateRange(this.startDate, this.endDate)
+      .subscribe((result) => {
         this.leveringen = result;
         this.dataSource = new MatTableDataSource(this.leveringen);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.dataSource.filterPredicate = (data, filter) =>{
-          console.log("hallo")
-          if (this.fromDate && this.toDate) {
-            return data.schedule.datum >= this.fromDate && data.schedule.datum <= this.toDate;
-          }
-          return true;
+      });
+  }
+
+  getLeveringen() {
+    this._adminService.getLeveringen().subscribe((result) => {
+      this.leveringen = result;
+      this.dataSource = new MatTableDataSource(this.leveringen);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (data, filter) => {
+        console.log('hallo');
+        if (this.fromDate && this.toDate) {
+          return (
+            data.schedule.datum >= this.fromDate &&
+            data.schedule.datum <= this.toDate
+          );
         }
-      }
-    );
+        return true;
+      };
+    });
   }
 
   //Apply filter when input in filterform
@@ -76,13 +119,12 @@ export class LeveringenComponent implements OnInit {
 
   //Delete a journalist from API, then get all journalists again for update page
   deleteLevering(id: number) {
-    this._adminService.deleteLevering(id).subscribe(
-      result => this.getLeveringen()
-    );
+    this._adminService
+      .deleteLevering(id)
+      .subscribe((result) => this.getLeveringen());
   }
 
   editLevering(id: number) {
     this.route.navigate(['/editLevering'], { queryParams: { id } });
   }
-
 }

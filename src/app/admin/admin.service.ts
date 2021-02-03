@@ -104,6 +104,10 @@ export class AdminService {
     return this.http.get<Levering[]>(this.baseUrl + "leveringen/schedule/" + id);
   }
 
+  getLeveringenByDateRange(start: string, end: string): Observable<Levering[]>{
+    return this.http.get<Levering[]>(this.baseUrl + "leveringen/start/" + start + "/end/" + end);
+  }
+
   updateLevering(leveringID: number, levering: Levering): Observable<Levering> {
     return this.http.put<Levering>(this.baseUrl + "leveringen/" + leveringID, levering);
   }

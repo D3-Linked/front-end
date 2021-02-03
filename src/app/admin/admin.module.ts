@@ -37,8 +37,7 @@ import { SchedulesComponent } from './schedules/schedules/schedules.component';
 import { AddScheduleComponent } from './schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './schedules/edit-schedule/edit-schedule.component';
 
-import { ControlMessages } from '../control-messages/control-messages.component';
-import { ValidationService } from '../control-messages/validation.service';
+import { DatePipe } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: 'bedrijven', component: BedrijvenComponent },
@@ -73,6 +72,7 @@ const appRoutes: Routes = [
     CommonModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
     SharedModule
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class AdminModule { }
