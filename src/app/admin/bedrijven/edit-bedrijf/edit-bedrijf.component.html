@@ -23,10 +23,10 @@
 
         <mat-form-field class="formfield">
           <mat-label>Email</mat-label>
-          <input matInput type="text" formControlName="email" [(ngModel)]="bedrijf.email" />
+          <input matInput type="email" formControlName="email" [(ngModel)]="bedrijf.email" />
         </mat-form-field>
         <control-messages [control]="editBedrijfForm.get('email')" class="errorMessage"></control-messages>
-        
+
       </div>
       <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!editBedrijfForm.valid">Bewerk
         bedrijf</button>
