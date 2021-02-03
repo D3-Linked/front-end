@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class AddBedrijfComponent implements OnInit {
   addBedrijfForm = this.fb.group({
     naam: ['', [Validators.minLength(2), Validators.required]],
+    email: ['', [Validators.minLength(2), Validators.required]],
+    adres: ['', [Validators.minLength(2), Validators.required]],
+    btwNummer: ['', [Validators.minLength(2), Validators.required]],
   })
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router) { }
 

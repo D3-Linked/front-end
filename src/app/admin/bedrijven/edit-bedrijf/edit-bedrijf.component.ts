@@ -17,6 +17,9 @@ export class EditBedrijfComponent implements OnInit {
 
   editBedrijfForm = this.fb.group({
     naam: ['', [Validators.minLength(2), Validators.required]],
+    email: ['', [Validators.minLength(2), Validators.required]],
+    adres: ['', [Validators.minLength(2), Validators.required]],
+    btwNummer: ['', [Validators.minLength(2), Validators.required]],
   })
 
   id: number = 0;
