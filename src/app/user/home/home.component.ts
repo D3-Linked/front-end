@@ -1,6 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Levering } from 'src/app/models/levering.model';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -13,14 +16,38 @@ export class HomeComponent implements OnInit {
   public code: number;
   public nummerplaat: string;
 
-  constructor(private route: Router) { }
+  dbDatum: string;
+  nowDatum: string;
+  userLevering: Levering[] = [];
+
+  constructor(private route: Router, private _userService: UserService, private snackbar: MatSnackBar, private datePipe: DatePipe,) { }
 
   ngOnInit(): void {
   }
   goTo(code: number, nummerplaat: string) {
-    this.route.navigate(['/userlevering'], { queryParams: { code, nummerplaat }});
-  }
+    this._userService.getPlanning(this.code, this.nummerplaat).subscribe(result => {
+      result.forEach((levering) => {
+        this.dbDatum = this.datePipe.transform(
+          new Date(levering.schedule.datum),
+          'yyyy-MM-dd'
+        );
+        this.nowDatum = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 
+        if (this.dbDatum == this.nowDatum) {
+          this.userLevering.push(levering);
+        }
+      });
+      if ((this.userLevering.length == 0)) {
+        this.snackbar.open('Geen leveringen gevonden voor u vandaag!', 'OK', {
+          duration: 3500,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }else{
+        this.route.navigate(['/userlevering'], { queryParams: { code, nummerplaat }});
+      }
+    });
+  }
 }
 
 

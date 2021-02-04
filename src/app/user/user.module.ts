@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EigenPlanningComponent } from './eigen-planning/eigen-planning.component';
 
+import { DatePipe } from '@angular/common';
+import { EigenProductenComponent } from './eigen-planning/eigen-producten/eigen-producten.component';
 
 const appRoutes: Routes = [
   { path: 'table', component: TableComponent },
@@ -14,11 +16,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TableComponent, HomeComponent, EigenPlanningComponent],
+  declarations: [TableComponent, HomeComponent, EigenPlanningComponent, EigenProductenComponent],
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
     SharedModule
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class UserModule { }
