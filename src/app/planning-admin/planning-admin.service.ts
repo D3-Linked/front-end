@@ -24,6 +24,10 @@ export class PlanningAdminService {
     return this.http.get<Schedule>(this.baseUrl + "schedules/" + id);
   }
 
+  getSchedulesByDateRange(start: string, end: string): Observable<Schedule[]>{
+    return this.http.get<Schedule[]>(this.baseUrl + "schedules/start/" + start + "/end/" + end);
+  }
+  
   getLeveringenByScheduleId(id:number): Observable<Levering[]>{
     return this.http.get<Levering[]>(this.baseUrl + "leveringen/schedule/" + id);
   }
