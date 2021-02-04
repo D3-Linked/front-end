@@ -20,6 +20,8 @@ import {
 } from '@angular/animations';
 import { Product } from 'src/app/models/product.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-schedules',
@@ -53,12 +55,27 @@ export class SchedulesComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
+
+  get fromDate() {
+    return this.range.get('start').value;
+  }
+  get toDate() {
+    return this.range.get('end').value;
+  }
+
+  startDate: string;
+  endDate: string;
 
   constructor(
     private _adminService: AdminService,
     private route: Router,
-    private snackbar: MatSnackBar
-  ) {}
+    private snackbar: MatSnackBar,
+    private datePipe: DatePipe
+  ) { }
 
   leveringen: Levering[] = null;
   producten: Product[] = null;
@@ -67,12 +84,43 @@ export class SchedulesComponent implements OnInit {
     this.getSchedules();
   }
 
+  getSchedulesByDateRange() {
+    this.startDate = this.datePipe.transform(
+      new Date(this.fromDate),
+      'yyyy-MM-ddThh:mm:ss.SSS'
+    );
+    console.log(this.startDate);
+    this.endDate = this.datePipe.transform(
+      new Date(this.toDate),
+      'yyyy-MM-ddThh:mm:ss.SSS'
+    );
+    console.log(this.endDate);
+    this._adminService
+      .getSchedulesByDateRange(this.startDate, this.endDate)
+      .subscribe((result) => {
+        this.schedules = result;
+        this.dataSource = new MatTableDataSource(this.schedules);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        console.log(result);
+      });
+  }
+
   getSchedules() {
     this._adminService.getSchedules().subscribe((result) => {
       this.schedules = result;
       this.dataSource = new MatTableDataSource(this.schedules);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (data, filter) => {
+        if (this.fromDate && this.toDate) {
+          return (
+            data.datum >= this.fromDate &&
+            data.datum <= this.toDate
+          );
+        }
+        return true;
+      };
     });
   }
 

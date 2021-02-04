@@ -1,7 +1,20 @@
 <div id="container">
   <h1>Beheer planningen</h1>
 
+  <div>
+    <mat-form-field appearance="fill">
+        <mat-label>Sorteer op datum</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate (dateChange)="getSchedulesByDateRange()" formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
 
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+</div>
   <mat-tab-group animationDuration="0ms" [selectedIndex]="selectedTab" (selectedIndexChange)="backToAll($event)">
     <mat-tab label="Alle planningen">
       <div class="accordion">
@@ -112,7 +125,8 @@
                   <input matInput type="text" formControlName="opmerking" />
                 </mat-form-field>
               </div>
-              <button class="button" mat-raised-button color="primary" type="submit" *ngIf="!planningAdded"  [disabled]="!addScheduleForm.valid">Voeg
+              <button class="button" mat-raised-button color="primary" type="submit" *ngIf="!planningAdded"
+                [disabled]="!addScheduleForm.valid">Voeg
                 leveringen toe</button>
             </form>
             <div id="leveringenContainer" *ngIf="planningAdded">
@@ -133,7 +147,8 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <control-messages [control]="addLeveringForm.get('laadkadeID')" class="errorMessage"></control-messages>
+                  <control-messages [control]="addLeveringForm.get('laadkadeID')" class="errorMessage">
+                  </control-messages>
                 </div>
                 <div>
                   <mat-form-field class="formfield">
@@ -144,9 +159,11 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <control-messages [control]="addLeveringForm.get('leverancierID')" class="errorMessage"></control-messages>
+                  <control-messages [control]="addLeveringForm.get('leverancierID')" class="errorMessage">
+                  </control-messages>
                 </div>
-                <button class="button" mat-raised-button color="primary" type="submit" *ngIf="!leveringAdded"  [disabled]="!addLeveringForm.valid">Voeg
+                <button class="button" mat-raised-button color="primary" type="submit" *ngIf="!leveringAdded"
+                  [disabled]="!addLeveringForm.valid">Voeg
                   producten toe</button>
               </form>
             </div>
@@ -160,7 +177,8 @@
                   </mat-form-field>
                   <control-messages [control]="addProductForm.get('naam')" class="errorMessage"></control-messages>
                 </div>
-                <button class="button" mat-raised-button color="primary" type="submit"  [disabled]="!addProductForm.valid">Voeg product toe</button>
+                <button class="button" mat-raised-button color="primary" type="submit"
+                  [disabled]="!addProductForm.valid">Voeg product toe</button>
                 <button class="button" mat-raised-button color="accent" (click)="makeNewLevering()">Voeg nog een
                   levering toe</button>
               </form>

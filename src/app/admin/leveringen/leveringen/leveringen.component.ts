@@ -90,7 +90,6 @@ export class LeveringenComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.filterPredicate = (data, filter) => {
-        console.log('hallo');
         if (this.fromDate && this.toDate) {
           return (
             data.schedule.datum >= this.fromDate &&

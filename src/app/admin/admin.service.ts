@@ -179,6 +179,10 @@ export class AdminService {
     return this.http.put<Schedule>(this.baseUrl + "schedules/" + scheduleID, schedule);
   }
 
+  getSchedulesByDateRange(start: string, end: string): Observable<Schedule[]>{
+    return this.http.get<Schedule[]>(this.baseUrl + "schedules/start/" + start + "/end/" + end);
+  }
+
   //USERS
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + "users");

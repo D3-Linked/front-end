@@ -1,5 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Laadkade } from 'src/app/models/laadkade.model';
 import { Leverancier } from 'src/app/models/leverancier.model';
 import { Levering } from 'src/app/models/levering.model';
@@ -38,6 +39,23 @@ export class PlanningComponent implements OnInit {
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID,
   });
 
+
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl(),
+  });
+
+  get fromDate() {
+    return this.range.get('start').value;
+  }
+  get toDate() {
+    return this.range.get('end').value;
+  }
+
+  startDate: string;
+  endDate: string;
+
+  
   addLeveringForm = this.fb.group({
     omschrijving: [''],
     laadkadeID: ['', Validators.required],
@@ -53,11 +71,31 @@ export class PlanningComponent implements OnInit {
 
   constructor(
     private planningService: PlanningAdminService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
     this.loadSchedules();
+  }
+
+  getSchedulesByDateRange() {
+    this.startDate = this.datePipe.transform(
+      new Date(this.fromDate),
+      'yyyy-MM-ddThh:mm:ss.SSS'
+    );
+    console.log(this.startDate);
+    this.endDate = this.datePipe.transform(
+      new Date(this.toDate),
+      'yyyy-MM-ddThh:mm:ss.SSS'
+    );
+    console.log(this.endDate);
+    this.planningService
+      .getSchedulesByDateRange(this.startDate, this.endDate)
+      .subscribe((result) => {
+        this.schedules = result;
+        console.log(result);
+      });
   }
 
   loadSchedules() {
