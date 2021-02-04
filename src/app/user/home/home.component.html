@@ -51,21 +51,24 @@
                     {{panelOpenState ? 'Vul hier uw code in die u heeft gekregen.' : 'KLIK HIER'}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <form>
+            <form [formGroup]="findLeveringenForm">
                 <div>
                     <mat-form-field>
                         <mat-label style="color: white;">Vul hier uw code in</mat-label>
-                        <input style="color: white;" matInput placeholder="Ex. 1234" [(ngModel)]="code" [ngModelOptions]="{standalone: true}">
+                        <input style="color: white;" matInput placeholder="Ex. 1234" [(ngModel)]="code" formControlName="code">
                     </mat-form-field>
+                    <control-messages [control]="findLeveringenForm.get('code')" class="errorMessage"></control-messages>
                 </div>
                 <div>
                     <mat-form-field>
                         <mat-label style="color: white;">Vul hier uw nummerplaat in</mat-label>
-                        <input style="color: white;" matInput placeholder="Ex. 1abc123" [(ngModel)]="nummerplaat" [ngModelOptions]="{standalone: true}">
+                        <input style="color: white;" matInput placeholder="Ex. 1abc123" [(ngModel)]="nummerplaat" formControlName="nummerplaat">
                     </mat-form-field>
+                    <control-messages [control]="findLeveringenForm.get('nummerplaat')" class="errorMessage"></control-messages>
                 </div>
                 <br>
-                <button class="button" (click)="goTo(code, nummerplaat)" mat-raised-button color="white" type="submit">Zoek uw levering
+                <button class="button" (click)="goTo(code, nummerplaat)" mat-raised-button color="white" type="submit">Zoek uw
+          levering
           op</button>
             </form>
         </mat-expansion-panel>

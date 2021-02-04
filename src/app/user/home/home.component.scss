@@ -1,4 +1,4 @@
-#title{
+#title {
     font-size: 20px;
     text-align: center;
     background-color: royalblue;
@@ -6,21 +6,26 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#logo{
-    padding-top : 20px;
+#logo {
+    padding-top: 20px;
     width: 75%;
 }
 
-#card{
+#card {
     height: 250px;
     margin: 20px;
-  }
+}
 
-.mat-card-title{
+.mat-card-title {
     color: #536dfe;
 }
 
 .mat-expansion-panel-header-description {
     display: flex;
     justify-content: flex-end;
-  }
+}
+
+.errorMessage {
+    color: white;
+    text-align: left;
+}

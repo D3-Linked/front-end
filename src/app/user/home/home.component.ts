@@ -1,7 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ValidationService } from 'src/app/control-messages/validation.service';
 import { Levering } from 'src/app/models/levering.model';
 import { UserService } from '../user.service';
 
@@ -20,7 +22,12 @@ export class HomeComponent implements OnInit {
   nowDatum: string;
   userLevering: Levering[] = [];
 
-  constructor(private route: Router, private _userService: UserService, private snackbar: MatSnackBar, private datePipe: DatePipe,) { }
+  findLeveringenForm = this.fb.group({
+    code: ['', [Validators.required, ValidationService.noNumber]],
+    nummerplaat: ['', [Validators.required]]
+  })
+
+  constructor(private route: Router, private _userService: UserService, private snackbar: MatSnackBar, private datePipe: DatePipe, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
