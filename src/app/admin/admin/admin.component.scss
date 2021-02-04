@@ -10,31 +10,35 @@ mat-card-content {
     text-align: center;
 }
 
-.navCard{
-    width: 25%;
+.navCard {
+    //width: 25%;
     float: left;
     margin: 25px;
 }
 
-#cardDiv{
+#cardDiv {
     width: 75%;
     min-width: 510px;
     margin: 100px auto;
     height: 50%;
 }
-h1{
+
+h1 {
     padding-top: 50px;
     text-align: center;
     font-size: 80px;
     font-weight: bold;
     text-transform: uppercase;
 }
-.btncenter{
+
+.btncenter {
     text-align: center !important;
     align-items: center !important;
 }
-@media (min-width: 900px) {
+
+
+/* @media (min-width: 900px) {
     .voorlaatste{
         margin-left: 225px !important;
     }
-  }
+  } */

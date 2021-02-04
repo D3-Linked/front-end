@@ -15,8 +15,6 @@ import { UserService } from '../user.service';
 })
 export class HomeComponent implements OnInit {
   panelOpenState = false;
-  public code: number;
-  public nummerplaat: string;
 
   dbDatum: string;
   nowDatum: string;
@@ -31,8 +29,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  goTo(code: number, nummerplaat: string) {
-    this._userService.getPlanning(this.code, this.nummerplaat).subscribe(result => {
+  goTo() {
+    this._userService.getPlanning(this.findLeveringenForm.value['code'], this.findLeveringenForm.value['nummerplaat']).subscribe(result => {
       result.forEach((levering) => {
         this.dbDatum = this.datePipe.transform(
           new Date(levering.schedule.datum),
@@ -51,7 +49,7 @@ export class HomeComponent implements OnInit {
           verticalPosition: 'bottom',
         });
       }else{
-        this.route.navigate(['/userlevering'], { queryParams: { code, nummerplaat }});
+        this.route.navigate(['/userlevering'], { queryParams: { code: this.findLeveringenForm.value['code'], nummerplaat: this.findLeveringenForm.value['nummerplaat'] }});
       }
     });
   }

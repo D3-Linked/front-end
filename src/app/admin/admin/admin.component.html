@@ -1,76 +1,108 @@
-<h1>Admin page</h1>
+<h1>Admin pagina</h1>
 
 <div id="cardDiv">
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer bedrijven</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de bedrijven</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toBedrijven()" mat-raised-button color="accent">Bedrijven</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer laadkades</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de laadkades</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toLaadkades()" mat-raised-button color="accent">Laadkades</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer leveranciers</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de leveranciers</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toLeveranciers()" mat-raised-button color="accent">Leveranciers</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer leveringen</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de leveringen</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toLeveringen()" mat-raised-button color="accent">Leveringen</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer producten</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de producten</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toProducten()" mat-raised-button color="accent">Producten</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer rollen</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de rollen</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toRoles()" mat-raised-button color="accent">Rollen</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard voorlaatste">
-        <mat-card-header>
-            <mat-card-title>Beheer planningen</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de planningen</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toSchedules()" mat-raised-button color="accent">Planningen</button></div>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="navCard">
-        <mat-card-header>
-            <mat-card-title>Beheer gebruikers</mat-card-title>
-            <mat-card-subtitle>Ga naar de beheerspagina voor de gebruikers</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <div class="btncenter"><button (click)="toUsers()" mat-raised-button color="accent">Gebruikers</button></div>
-        </mat-card-actions>
-    </mat-card>
+    <mat-grid-list cols="4" rowHeight="200px">
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer bedrijven</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de bedrijven</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/bedrijven" mat-raised-button color="accent">Bedrijven</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer laadkades</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de laadkades</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/laadkades" mat-raised-button color="accent">Laadkades</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer leveranciers</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de leveranciers</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/leveranciers" mat-raised-button color="accent">Leveranciers</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer leveringen</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de leveringen</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/leveringen" mat-raised-button color="accent">Leveringen</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer producten</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de producten</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/producten" mat-raised-button color="accent">Producten</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer rollen</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de rollen</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/roles" mat-raised-button color="accent">Rollen</button></div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard voorlaatste">
+                <mat-card-header>
+                    <mat-card-title>Beheer planningen</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de planningen</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/schedules" mat-raised-button color="accent">Planningen</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="navCard">
+                <mat-card-header>
+                    <mat-card-title>Beheer gebruikers</mat-card-title>
+                    <mat-card-subtitle>Ga naar de beheerspagina voor de gebruikers</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <div class="btncenter"><button routerLink="/users" mat-raised-button color="accent">Gebruikers</button></div>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+
+
+
+
+
+
+
 </div>
