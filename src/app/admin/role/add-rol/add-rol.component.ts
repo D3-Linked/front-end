@@ -19,6 +19,9 @@ export class AddRolComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //als het formulier ingediend wordt ->
+    //rol toevoegen via de admin service &&
+    //terug navigeren naar de roles overzicht pagina
   onSubmit() {
     this._adminService.addRole(this.addRolForm.value).subscribe();
     this.route.navigate(['/roles']);

@@ -40,6 +40,7 @@ export class AddLeveringComponent implements OnInit {
     this.loadData();
   }
 
+  //haal de laadkades, schedules en leveranciers op voor de dropdown in het formulier
   loadData() {
     this._adminService.getLaadkades().subscribe((result) => {
       this.laadkades = result;
@@ -52,6 +53,10 @@ export class AddLeveringComponent implements OnInit {
     });
   }
 
+  //als het formulier ingediend wordt ->
+    //zet de laadkade id, schedule id en leverancier id die van het formulier komen om naar een nummer ipv een string
+    //levering toevoegen via de admin service &&
+    //terug navigeren naar de leveringen overzicht pagina
   onSubmit() {
     this.addLeveringForm.value["laadkadeID"] = parseInt(this.addLeveringForm.value["laadkadeID"]);
     this.addLeveringForm.value["scheduleID"] = parseInt(this.addLeveringForm.value["scheduleID"]);

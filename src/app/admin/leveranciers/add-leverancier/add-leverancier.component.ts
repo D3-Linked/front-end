@@ -26,12 +26,17 @@ export class AddLeverancierComponent implements OnInit {
     this.getBedrijven();
   }
 
+  //haal alle bedrijven op voor de dropdown in het formulier
   getBedrijven(){
     this._adminService.getBedrijven().subscribe(result => {
       this.bedrijven = result;
     });
   }
 
+  //als het formulier ingediend wordt ->
+    //zet de leverancier code en bedrijf id die van het formulier komen om naar een nummer ipv een string
+    //leverancier toevoegen via de admin service &&
+    //terug navigeren naar de leveranciers overzicht pagina
   onSubmit() {
     //this.addLeverancierForm.value['bedrijf'] = this._adminService.getBedrijfById(this.addLeverancierForm.value['bedrijfID']);
     //console.log(this.addLeverancierForm.value);

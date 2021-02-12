@@ -21,6 +21,10 @@ export class AddLaadkadeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //als het formulier ingediend wordt ->
+    //zet de laadkade nummer die van het formulier komt om naar een nummer ipv een string
+    //laadkade toevoegen via de admin service &&
+    //terug navigeren naar de laadkades overzicht pagina
   onSubmit() {
     this.addLaadkadeForm.value["nummer"] = parseInt(this.addLaadkadeForm.value["nummer"]);
     this._adminService.addLaadkade(this.addLaadkadeForm.value).subscribe();

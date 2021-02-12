@@ -1,6 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Laadkade } from 'src/app/models/laadkade.model';
 import { Leverancier } from 'src/app/models/leverancier.model';
 import { Levering } from 'src/app/models/levering.model';
@@ -39,7 +44,6 @@ export class PlanningComponent implements OnInit {
     userID: JSON.parse(localStorage.getItem('LoggedUser')).userID,
   });
 
-
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
@@ -55,7 +59,6 @@ export class PlanningComponent implements OnInit {
   startDate: string;
   endDate: string;
 
-  
   addLeveringForm = this.fb.group({
     omschrijving: [''],
     laadkadeID: ['', Validators.required],
@@ -155,6 +158,13 @@ export class PlanningComponent implements OnInit {
     if (this.addScheduleForm.value['opmerking'] == '') {
       this.addScheduleForm.value['opmerking'] = 'Geen opmerkingen';
     }
+
+    //add one hour to the date (timezone conversion)
+    this.addScheduleForm.value['datum'] = new Date(
+      new Date(this.addScheduleForm.value['datum']).setHours(
+        new Date(this.addScheduleForm.value['datum']).getHours() + 1
+      )
+    );
 
     this.planningService
       .addSchedule(this.addScheduleForm.value)

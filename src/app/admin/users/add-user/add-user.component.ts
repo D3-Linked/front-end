@@ -29,15 +29,20 @@ export class AddUserComponent implements OnInit {
     this.getRollen();
   }
 
+  //haal alle rollen op uit de admin service voor de dropdown in het formulier
   getRollen(){
     this._adminService.getRoles().subscribe(result => {
       this.rollen = result;
     })
   }
 
+  //als het formulier ingediend wordt ->
+    //
+    //rol toevoegen via de admin service &&
+    //terug navigeren naar de bedrijven overzicht pagina
   onSubmit() {
     this.addGebruikerForm.value["roleID"] = parseInt(this.addGebruikerForm.value["roleID"]);
-    console.log(this.addGebruikerForm.value);
+
     this._adminService.addUser(this.addGebruikerForm.value).subscribe();
     this.route.navigate(['/users']);
   }

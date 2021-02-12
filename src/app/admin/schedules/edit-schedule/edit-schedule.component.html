@@ -1,24 +1,24 @@
 <h1>Bewerk planning van {{schedule.datum | date:'dd/MM/yyyy'}}</h1>
 <mat-card id="card">
-  <mat-card-content>
-    <form [formGroup]="editScheduleForm" (ngSubmit)="onSubmit()">
-      <div>
-        <mat-form-field class="formfield" appearance="fill">
-          <mat-label>Kies een datum</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="datum" [(ngModel)]="schedule.datum">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <control-messages [control]="editScheduleForm.get('datum')" class="errorMessage"></control-messages>
-      </div>
-      <div>
-        <mat-form-field class="formfield">
-          <mat-label>Opmerking</mat-label>
-          <input matInput type="text" formControlName="opmerking" [(ngModel)]="schedule.opmerking" />
-        </mat-form-field>
-      </div>
-      <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!editScheduleForm.valid">Bewerk
+    <mat-card-content>
+        <form [formGroup]="editScheduleForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field class="formfield">
+                    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="datum" [(ngModel)]="schedule.datum">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker>
+                    </ngx-mat-datetime-picker>
+                </mat-form-field>
+                <control-messages [control]="editScheduleForm.get('datum')" class="errorMessage"></control-messages>
+            </div>
+            <div>
+                <mat-form-field class="formfield">
+                    <mat-label>Opmerking</mat-label>
+                    <input matInput type="text" formControlName="opmerking" [(ngModel)]="schedule.opmerking" />
+                </mat-form-field>
+            </div>
+            <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!editScheduleForm.valid">Bewerk
         planning</button>
-    </form>
-  </mat-card-content>
+        </form>
+    </mat-card-content>
 </mat-card>

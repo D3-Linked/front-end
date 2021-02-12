@@ -26,6 +26,8 @@ import { ControlMessages } from '../control-messages/control-messages.component'
 import { ValidationService } from '../control-messages/validation.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+
 @NgModule({
   declarations: [ControlMessages],
   imports: [
@@ -49,6 +51,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatExpansionModule,
     ScrollingModule,
     MatSnackBarModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -71,6 +75,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ScrollingModule,
     ControlMessages,
     MatSnackBarModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule
   ],
   providers: [ValidationService],
 })

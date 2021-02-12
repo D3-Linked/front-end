@@ -22,12 +22,18 @@ export class AddScheduleComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //als het formulier ingediend wordt ->
+    //zet de code, user id die van het formulier komen om naar een nummer ipv een string &&
+    //zet de datum om naar een datum object &&
+    //bedrijf toevoegen via de admin service &&
+    //terug navigeren naar de bedrijven overzicht pagina
   onSubmit() {
     this.addScheduleForm.value["code"] = parseInt(this.addScheduleForm.value["code"]);
     this.addScheduleForm.value["userID"] = parseInt(this.addScheduleForm.value["userID"]);
-    this.addScheduleForm.value["datum"] = new Date(this.addScheduleForm.value["datum"]);
 
-    console.log(this.addScheduleForm.value);
+    //add one hour to the date (timezone conversion)
+    this.addScheduleForm.value["datum"] = new Date(new Date(this.addScheduleForm.value["datum"]).setHours(new Date(this.addScheduleForm.value["datum"]).getHours() + 1));
+
     this._adminService.addSchedule(this.addScheduleForm.value).subscribe();
     this.route.navigate(['/schedules']);
   }

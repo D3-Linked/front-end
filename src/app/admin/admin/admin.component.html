@@ -1,7 +1,7 @@
 <h1>Admin pagina</h1>
 
 <div id="cardDiv">
-    <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-list #grid [cols]="cols" rowHeight="200px" gutterSize="20px">
         <mat-grid-tile colspan="1" rowspan="1">
             <mat-card class="navCard">
                 <mat-card-header>
@@ -74,7 +74,7 @@
             </mat-card>
         </mat-grid-tile>
         <mat-grid-tile colspan="1" rowspan="1">
-            <mat-card class="navCard voorlaatste">
+            <mat-card class="navCard">
                 <mat-card-header>
                     <mat-card-title>Beheer planningen</mat-card-title>
                     <mat-card-subtitle>Ga naar de beheerspagina voor de planningen</mat-card-subtitle>

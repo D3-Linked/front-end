@@ -67,9 +67,10 @@ export class EditScheduleComponent implements OnInit {
     this.schedule.user = this.getUser(this.schedule.userID);
     this.schedule.code = parseInt(this.editScheduleForm.value["code"]);
     this.schedule.userID = parseInt(this.editScheduleForm.value["userID"]);
-    this.schedule.datum = new Date(this.editScheduleForm.value["datum"]);
 
-    console.log(this.schedule);
+    //add one hour to the date (timezone conversion)
+     this.schedule.datum = new Date(new Date(this.schedule.datum).setHours(new Date(this.schedule.datum).getHours() + 1));
+
     this._adminService.updateSchedule(this.id, this.schedule).subscribe();
     this.route.navigate(['/schedules']);
   }

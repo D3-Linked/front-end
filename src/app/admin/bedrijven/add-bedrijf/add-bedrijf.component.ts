@@ -21,6 +21,9 @@ export class AddBedrijfComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //als het formulier ingediend wordt ->
+    //bedrijf toevoegen via de admin service &&
+    //terug navigeren naar de bedrijven overzicht pagina
   onSubmit() {
     this._adminService.addBedrijf(this.addBedrijfForm.value).subscribe();
     this.route.navigate(['/bedrijven']);
