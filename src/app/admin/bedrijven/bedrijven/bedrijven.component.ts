@@ -29,6 +29,7 @@ export class BedrijvenComponent implements OnInit {
     this.getBedrijven();
   }
 
+  //Haal alle bedrijven op uit de database om weer te geven op de overzichtspagina
   getBedrijven() {
     this._adminService.getBedrijven().subscribe(
       result => {
@@ -40,7 +41,7 @@ export class BedrijvenComponent implements OnInit {
     );
   }
 
-  //Apply filter when input in filterform
+  //Filter toepassen als er input komt in het filtervak
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -50,16 +51,19 @@ export class BedrijvenComponent implements OnInit {
     }
   }
 
+  //Navigeer naar de bedrijf toevoegen pagina
   addBedrijf() {
     this.route.navigate(['/addBedrijf']);
   }
 
+  //Verwijder een bedrijf aan de hand van zijn id
   deleteBedrijf(id: number) {
     this._adminService.deleteBedrijf(id).subscribe(
       result => this.getBedrijven()
     );
   }
 
+  //Ga naar de bewerk bedrijf pagina, met de id als parameter
   editBedrijf(id: number) {
     this.route.navigate(['/editBedrijf'], { queryParams: { id }});
   }

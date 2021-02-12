@@ -84,6 +84,7 @@ export class SchedulesComponent implements OnInit {
     this.getSchedules();
   }
 
+  //Haal alle laadkades op uit de database om weer te geven op de overzichtspagina
   getSchedulesByDateRange() {
     this.startDate = this.datePipe.transform(
       new Date(this.fromDate),
@@ -106,6 +107,7 @@ export class SchedulesComponent implements OnInit {
       });
   }
 
+  //Haal alle laadkades op uit de database om weer te geven op de overzichtspagina
   getSchedules() {
     this._adminService.getSchedules().subscribe((result) => {
       this.schedules = result;
@@ -124,6 +126,7 @@ export class SchedulesComponent implements OnInit {
     });
   }
 
+  //Haal alle leveringen van een bepaalde schedule op uit de database om weer te geven op de overzichtspagina
   getLeveringenByScheduleID(id: number) {
     this._adminService.getLeveringenByScheduleId(id).subscribe((result) => {
       this.leveringen = result;
@@ -132,14 +135,17 @@ export class SchedulesComponent implements OnInit {
     return this.leveringen;
   }
 
+  //Knop om de producten van een levering te bekijken
   viewProducts(id: number) {
     this.getProductenByLeveringID(id);
   }
 
+  //Knop om de producten van een levering te verbergen
   hideProducts() {
     this.producten = null;
   }
 
+  //Haal alle producten van een bepaalde levering op uit de database om weer te geven op de overzichtspagina
   getProductenByLeveringID(id: number) {
     this._adminService.getProductenByLeveringId(id).subscribe((result) => {
       this.producten = result;
@@ -147,7 +153,7 @@ export class SchedulesComponent implements OnInit {
     return this.producten;
   }
 
-  //Apply filter when input in filterform
+  //Filter toepassen als er input komt in het filtervak
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -157,10 +163,12 @@ export class SchedulesComponent implements OnInit {
     }
   }
 
+  //Navigeer naar de schedule toevoegen pagina
   addSchedule() {
     this.route.navigate(['/addSchedule']);
   }
 
+  //Verwijder een schedule aan de hand van zijn id
   deleteSchedule(id: number) {
     this._adminService.deleteSchedule(id).subscribe(
       (result) => {
@@ -180,36 +188,41 @@ export class SchedulesComponent implements OnInit {
     );
   }
 
+  //Ga naar de bewerk schedule pagina, met de id als parameter
   editSchedule(id: number) {
     this.route.navigate(['/editSchedule'], { queryParams: { id } });
   }
 
+  //Navigeer naar de levering toevoegen pagina
   addLevering(scheduleID: number) {
     this.route.navigate(['/addLevering'], { queryParams: { scheduleID } });
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
+  //Verwijder een levering aan de hand van zijn id
   deleteLevering(leveringID: number, scheduleID: number) {
     this._adminService
       .deleteLevering(leveringID)
       .subscribe((result) => this.getLeveringenByScheduleID(scheduleID));
   }
 
+  //Ga naar de bewerk levering pagina, met de id als parameter
   editLevering(id: number) {
     this.route.navigate(['/editLevering'], { queryParams: { id } });
   }
 
+  //Navigeer naar de product toevoegen pagina
   addProduct(leveringID: number) {
     this.route.navigate(['/addProduct'], { queryParams: { leveringID } });
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
+  //Verwijder een product aan de hand van zijn id
   deleteProduct(producTID: number, scheduleID: number) {
     this._adminService
       .deleteProduct(producTID)
       .subscribe((result) => this.getLeveringenByScheduleID(scheduleID));
   }
 
+  //Ga naar de bewerk product pagina, met de id als parameter
   editProduct(id: number) {
     this.route.navigate(['/editProduct'], { queryParams: { id } });
   }

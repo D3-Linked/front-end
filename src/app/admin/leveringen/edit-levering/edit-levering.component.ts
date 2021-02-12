@@ -26,6 +26,7 @@ export class EditLeveringComponent implements OnInit {
   laadkades: Laadkade[];
   leveranciers: Leverancier[];
 
+  //Maak het formulier aan met de juiste validatie
   editLeveringForm = this.fb.group({
     omschrijving: ['', [Validators.required, Validators.minLength(2)]],
     laadkadeID: ['', Validators.required],
@@ -41,6 +42,7 @@ export class EditLeveringComponent implements OnInit {
   schedule: Schedule;
   leverancier: Leverancier;
 
+  //Haal de parameter id uit de url en zoek de bijbehorende levering
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params['id'];
@@ -49,6 +51,7 @@ export class EditLeveringComponent implements OnInit {
     });
   }
 
+  //haal de gegevens van laadkades, schedules en leveranciers uit de database
   loadData() {
     this._adminService.getLaadkades().subscribe((result) => {
       this.laadkades = result;
@@ -61,12 +64,14 @@ export class EditLeveringComponent implements OnInit {
     });
   }
 
+  //haal de juiste levering uit de database
   findLevering() {
     this._adminService.getLeveringById(this.id).subscribe((result) => {
       this.levering = result;
     });
   }
 
+  //haal de juiste laadkade uit de database
   getLaadkade(id:number){
     this._adminService.getLaadkadeById(id).subscribe(result => {
       this.laadkade = result;
@@ -74,6 +79,7 @@ export class EditLeveringComponent implements OnInit {
     return this.laadkade;
   }
 
+  //haal de juiste schedule uit de database
   getSchedule(id:number){
     this._adminService.getScheduleById(id).subscribe(result => {
       this.schedule = result;
@@ -81,6 +87,7 @@ export class EditLeveringComponent implements OnInit {
     return this.schedule;
   }
 
+  //haal de juiste leverancier uit de database
   getLeverancier(id:number){
     this._adminService.getLeverancierById(id).subscribe(result => {
       this.leverancier = result;
@@ -88,12 +95,13 @@ export class EditLeveringComponent implements OnInit {
     return this.leverancier;
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update de levering in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this.levering.laadkade = this.getLaadkade(this.levering.laadkadeID);
     this.levering.schedule = this.getSchedule(this.levering.scheduleID);
     this.levering.leverancier = this.getLeverancier(this.levering.leverancierID);
 
-    console.log(this.levering);
     this._adminService.updateLevering(this.id, this.levering).subscribe();
     this.route.navigate(['/leveringen']);
   }

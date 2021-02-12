@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddRolComponent implements OnInit {
 
+  //Maak het formulier aan met de juiste validatie
   addRolForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
   })

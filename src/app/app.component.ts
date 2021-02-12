@@ -17,10 +17,12 @@ export class AppComponent {
     this.getLoggedUser();
   }
 
+  //Haal de gegevens van de ingelogde user op
   getLoggedUser(){
     this.loggedUser = this.appService.getLoggedUser();
   }
-  
+
+  //log de user uit
   onLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("LoggedUser");

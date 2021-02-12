@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-bedrijf.component.scss', '../../admin_style.scss']
 })
 export class AddBedrijfComponent implements OnInit {
+  //Maak het formulier aan met de juiste validatie
   addBedrijfForm = this.fb.group({
     naam: ['', [Validators.minLength(5), Validators.required]],
     email: ['', [Validators.minLength(2), Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],

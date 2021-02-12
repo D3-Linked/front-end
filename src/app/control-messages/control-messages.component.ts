@@ -9,10 +9,11 @@ import { ValidationService } from './validation.service';
   `
 })
 export class ControlMessages {
-  //errorMessage: string;
+  //Krijgt een formControl element binnen dat hij moet controlleren
   @Input() control: FormControl;
   constructor() {}
 
+  //controlleerd welke validate er op deze control is ingesteld en haalt via de validationService de juiste message op
   get errorMessage() {
     for (let propertyName in this.control.errors) {
       console.log(propertyName);

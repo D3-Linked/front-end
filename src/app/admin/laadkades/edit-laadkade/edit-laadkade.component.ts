@@ -14,7 +14,8 @@ import { Laadkade } from 'src/app/models/laadkade.model';
 export class EditLaadkadeComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
-  isChecked = true;
+
+  //Maak het formulier aan met de juiste validatie
   editLaadkadeForm = this.fb.group({
     nummer: ['', [Validators.min(0), Validators.required]],
     isBezet: ['']
@@ -22,7 +23,9 @@ export class EditLaadkadeComponent implements OnInit {
 
   id: number = 0;
   laadkade: Laadkade;
+  isChecked = true;
 
+  //Haal de parameter id uit de url en zoek de bijbehorende laadkade
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -30,6 +33,7 @@ export class EditLaadkadeComponent implements OnInit {
     });
   }
 
+  //haal de juiste laadkade uit de database
   findLaadkade(){
     this._adminService.getLaadkadeById(this.id).subscribe(
       result => {
@@ -38,6 +42,8 @@ export class EditLaadkadeComponent implements OnInit {
     );
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update de laadkade in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this.laadkade.nummer = parseInt(this.editLaadkadeForm.value['nummer']);
     this._adminService.updateLaadkade(this.id, this.laadkade).subscribe();

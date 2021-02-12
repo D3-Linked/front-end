@@ -17,6 +17,7 @@ export class EditUserComponent implements OnInit {
 
   rollen: Role[];
 
+  //Maak het formulier aan met de juiste validatie
   editGebruikerForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
@@ -27,6 +28,7 @@ export class EditUserComponent implements OnInit {
   gebruiker: User;
   rol: Role;
 
+  //Haal de parameter id uit de url en zoek de bijbehorende laadkade
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -35,6 +37,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+  //haal de juiste gebruiker uit de database
   findGebruiker(){
     this._adminService.getUserById(this.id).subscribe(
       result => {
@@ -43,12 +46,14 @@ export class EditUserComponent implements OnInit {
     );
   }
 
+  //haal alle rollen uit de database
   getRoles(){
     this._adminService.getRoles().subscribe(result => {
       this.rollen = result;
     })
   }
 
+  //haal de juiste rol uit de database
   getRol(id:number){
     this._adminService.getRoleById(id).subscribe(result => {
       this.rol = result;
@@ -56,6 +61,8 @@ export class EditUserComponent implements OnInit {
     return this.rol;
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update de user in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this.gebruiker.rol = this.getRol(this.gebruiker.roleID);
     console.log(this.gebruiker);

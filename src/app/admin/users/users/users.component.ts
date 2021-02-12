@@ -30,6 +30,7 @@ export class UsersComponent implements OnInit {
     this.getGebruikers();
   }
 
+  //Haal alle laadkades op uit de database om weer te geven op de overzichtspagina
   getGebruikers() {
     this._adminService.getUsers().subscribe(
       result => {
@@ -41,7 +42,7 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  //Apply filter when input in filterform
+  //Filter toepassen als er input komt in het filtervak
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -51,18 +52,19 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  //Navigate to add journalist page
+  //Navigeer naar de gebruiker toevoegen pagina
   addGebruiker() {
     this.route.navigate(['/addGebruiker']);
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
+  //Verwijder een gebruiker aan de hand van zijn id
   deleteGebruiker(id: number) {
     this._adminService.deleteUser(id).subscribe(
       result => this.getGebruikers()
     );
   }
 
+  //Ga naar de bewerk gebruiker pagina, met de id als parameter
   editGebruiker(id: number) {
     this.route.navigate(['/editGebruiker'], { queryParams: { id }});
   }

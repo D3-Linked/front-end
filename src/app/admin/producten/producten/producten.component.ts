@@ -30,6 +30,7 @@ export class ProductenComponent implements OnInit {
     this.getProducten();
   }
 
+  //Haal alle producten op uit de database om weer te geven op de overzichtspagina
   getProducten() {
     this._adminService.getProducten().subscribe(
       result => {
@@ -41,7 +42,7 @@ export class ProductenComponent implements OnInit {
     );
   }
 
-  //Apply filter when input in filterform
+  //Filter toepassen als er input komt in het filtervak
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -51,18 +52,19 @@ export class ProductenComponent implements OnInit {
     }
   }
 
-  //Navigate to add journalist page
+  //Navigeer naar de product toevoegen pagina
   addProduct() {
     this.route.navigate(['/addProduct']);
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
+  //Verwijder een product aan de hand van zijn id
   deleteProduct(id: number) {
     this._adminService.deleteProduct(id).subscribe(
       result => this.getProducten()
     );
   }
 
+  //Ga naar de bewerk product pagina, met de id als parameter
   editProduct(id: number) {
     this.route.navigate(['/editProduct'], { queryParams: { id }});
   }

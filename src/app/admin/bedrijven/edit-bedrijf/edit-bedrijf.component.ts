@@ -15,6 +15,7 @@ export class EditBedrijfComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
+  //Maak het formulier aan met de juiste validatie
   editBedrijfForm = this.fb.group({
     naam: ['', [Validators.minLength(5), Validators.required]],
     email: ['', [Validators.minLength(6), Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
@@ -25,6 +26,7 @@ export class EditBedrijfComponent implements OnInit {
   id: number = 0;
   bedrijf: Bedrijf;
 
+  //Haal de parameter id uit de url en zoek het bijbehorende bedrijf
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -32,6 +34,7 @@ export class EditBedrijfComponent implements OnInit {
     });
   }
 
+  //haal het juiste bedrijf uit de database
   findBedrijf(){
     this._adminService.getBedrijfById(this.id).subscribe(
       result => {
@@ -40,6 +43,8 @@ export class EditBedrijfComponent implements OnInit {
     );
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update het bedrijf in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this._adminService.updateBedrijf(this.id, this.bedrijf).subscribe();
     this.route.navigate(['/bedrijven']);

@@ -12,6 +12,7 @@ import { Role } from 'src/app/models/role.model';
 })
 export class AddUserComponent implements OnInit {
 
+  //Maak het formulier aan met de juiste validatie
   addGebruikerForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],

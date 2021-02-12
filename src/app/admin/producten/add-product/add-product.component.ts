@@ -12,6 +12,7 @@ import { Levering } from 'src/app/models/levering.model';
 })
 export class AddProductComponent implements OnInit {
 
+  //Maak het formulier aan met de juiste validatie
   addProductForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
     leveringID: ['', Validators.required]

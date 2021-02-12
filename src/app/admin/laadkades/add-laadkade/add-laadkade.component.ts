@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 })
 export class AddLaadkadeComponent implements OnInit {
 
+  //Maak het formulier aan met de juiste validatie
   addLaadkadeForm = this.fb.group({
     nummer: ['', [Validators.min(0), Validators.required]],
     isBezet: false
   })
+  
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router) { }
 
   ngOnInit(): void {

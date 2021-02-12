@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddScheduleComponent implements OnInit {
 
+  //Maak het formulier aan met de juiste validatie
   addScheduleForm = this.fb.group({
     code: 0,
     datum: ['', Validators.required],

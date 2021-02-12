@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ValidationService {
+  //Stel de juiste error messages in voor elke validator
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
     let config = {
       required: 'Dit veld is verplicht',
@@ -17,6 +18,7 @@ export class ValidationService {
     return config[validatorName];
   }
 
+  //Eigen validator om te checken of de input enkel nummers bevat
   static noNumber(control) {
     if (control.value.match(/[0-9]+/)) {
       return null;

@@ -15,8 +15,7 @@ export class EditLEverancierComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
-  bedrijven : Bedrijf[] = null;
-
+  //Maak het formulier aan met de juiste validatie
   editLeverancierForm = this.fb.group({
     code: ['', [Validators.required, Validators.min(0)]],
     nummerplaat: ['',[Validators.required, Validators.minLength(6)]],
@@ -27,7 +26,9 @@ export class EditLEverancierComponent implements OnInit {
   id: number = 0;
   leverancier: Leverancier;
   bedrijf: Bedrijf;
+  bedrijven : Bedrijf[] = null;
 
+  //Haal de parameter id uit de url en zoek de bijbehorende leverancier
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -36,6 +37,7 @@ export class EditLEverancierComponent implements OnInit {
     });
   }
 
+  //Haal alle bedrijven uit de database voor de dropdown in het formulier
   getBedrijven(){
     this._adminService.getBedrijven().subscribe(
       result => {
@@ -44,6 +46,7 @@ export class EditLEverancierComponent implements OnInit {
     );
   }
 
+  //haal het juiste bedrijf uit de database
   getBedrijf(id:number){
     this._adminService.getBedrijfById(id).subscribe(
       result => {
@@ -53,6 +56,7 @@ export class EditLEverancierComponent implements OnInit {
     return this.bedrijf;
   }
 
+  //haal de juiste leverancier uit de database
   findLeverancier(){
     this._adminService.getLeverancierById(this.id).subscribe(
       result => {
@@ -61,6 +65,8 @@ export class EditLEverancierComponent implements OnInit {
     );
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update de leverancier in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this.leverancier.bedrijf = this.getBedrijf(this.leverancier.bedrijfID);
     console.log(this.leverancier);

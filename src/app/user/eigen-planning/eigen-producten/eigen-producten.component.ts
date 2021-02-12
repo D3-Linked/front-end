@@ -13,6 +13,7 @@ export class EigenProductenComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
+  //Laad alle producten van een bepaalde levering
   ngOnInit(): void {
     this.userService.getProductenByLeveringId(parseInt(this.leveringId)).subscribe(result => {
       this.producten = result;

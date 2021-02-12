@@ -39,11 +39,13 @@ export class LeveringenComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  //Maak het formulier voor de datepicker filter
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl(),
   });
 
+  //Haal de data op uit het formulier
   get fromDate() {
     return this.range.get('start').value;
   }
@@ -60,10 +62,12 @@ export class LeveringenComponent implements OnInit {
     private datePipe: DatePipe
   ) {}
 
+
   ngOnInit(): void {
     this.getLeveringen();
   }
 
+  //Haal alle leveringen op uit de database binnen de gegeven date range om weer te geven op de overzichtspagina
   getLeveringenByDateRange() {
     this.startDate = this.datePipe.transform(
       new Date(this.fromDate),
@@ -83,6 +87,7 @@ export class LeveringenComponent implements OnInit {
       });
   }
 
+  //Haal alle leveringen op uit de database om weer te geven op de overzichtspagina
   getLeveringen() {
     this._adminService.getLeveringen().subscribe((result) => {
       this.leveringen = result;
@@ -101,7 +106,7 @@ export class LeveringenComponent implements OnInit {
     });
   }
 
-  //Apply filter when input in filterform
+  //Filter toepassen als er input komt in het filtervak
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -111,18 +116,19 @@ export class LeveringenComponent implements OnInit {
     }
   }
 
-  //Navigate to add journalist page
+  //Navigeer naar de levering toevoegen pagina
   addLevering() {
     this.route.navigate(['/addLevering']);
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
+  //Verwijder een levering aan de hand van zijn id
   deleteLevering(id: number) {
     this._adminService
       .deleteLevering(id)
       .subscribe((result) => this.getLeveringen());
   }
 
+  //Ga naar de bewerk levering pagina, met de id als parameter
   editLevering(id: number) {
     this.route.navigate(['/editLevering'], { queryParams: { id } });
   }

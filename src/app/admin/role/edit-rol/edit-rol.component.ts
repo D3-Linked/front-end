@@ -15,6 +15,7 @@ export class EditRolComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _adminService: AdminService, private route: Router, private activatedRoute: ActivatedRoute) { }
 
+  //Maak het formulier aan met de juiste validatie
   editRolForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
   })
@@ -22,6 +23,7 @@ export class EditRolComponent implements OnInit {
   id: number = 0;
   rol: Role;
 
+  //Haal de parameter id uit de url en zoek de bijbehorende rol
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -29,6 +31,7 @@ export class EditRolComponent implements OnInit {
     });
   }
 
+  //haal de juiste rol uit de database
   findRol(){
     this._adminService.getRoleById(this.id).subscribe(
       result => {
@@ -37,6 +40,8 @@ export class EditRolComponent implements OnInit {
     );
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update de rol in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this._adminService.updateRole(this.id, this.rol).subscribe();
     this.route.navigate(['/roles']);

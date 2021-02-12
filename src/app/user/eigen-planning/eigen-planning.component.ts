@@ -28,6 +28,7 @@ export class EigenPlanningComponent implements OnInit {
     private snackbar: MatSnackBar
   ) {}
 
+  //Haal de code en nummerplaat uit de url
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.code = params['code'];
@@ -36,6 +37,7 @@ export class EigenPlanningComponent implements OnInit {
     this.search();
   }
 
+  //Zoek de bijbehorende planning in de database
   search() {
     this._userService.getPlanning(this.code, this.nummerplaat).subscribe(
       (data) => {

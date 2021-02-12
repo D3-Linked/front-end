@@ -31,6 +31,7 @@ export class LaadkadesComponent implements OnInit {
     this.getLaadkades();
   }
 
+  //Haal alle laadkades op uit de database om weer te geven op de overzichtspagina
   getLaadkades() {
     this._adminService.getLaadkades().subscribe(
       result => {
@@ -42,7 +43,7 @@ export class LaadkadesComponent implements OnInit {
     );
   }
 
-  //Apply filter when input in filterform
+  //Filter toepassen als er input komt in het filtervak
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -52,18 +53,19 @@ export class LaadkadesComponent implements OnInit {
     }
   }
 
-  //Navigate to add journalist page
+  //Navigeer naar de laadkade toevoegen pagina
   addLaadkade() {
     this.route.navigate(['/addLaadkade']);
   }
 
-  //Delete a journalist from API, then get all journalists again for update page
+  //Verwijder een laadkade aan de hand van zijn id
   deleteLaadkade(id: number) {
     this._adminService.deleteLaadkade(id).subscribe(
       result => this.getLaadkades()
     );
   }
 
+  //Ga naar de bewerk laadkade pagina, met de id als parameter
   editLaadkade(id: number) {
     this.route.navigate(['/editLaadkade'], { queryParams: { id }});
   }

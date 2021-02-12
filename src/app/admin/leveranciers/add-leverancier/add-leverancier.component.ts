@@ -38,8 +38,6 @@ export class AddLeverancierComponent implements OnInit {
     //leverancier toevoegen via de admin service &&
     //terug navigeren naar de leveranciers overzicht pagina
   onSubmit() {
-    //this.addLeverancierForm.value['bedrijf'] = this._adminService.getBedrijfById(this.addLeverancierForm.value['bedrijfID']);
-    //console.log(this.addLeverancierForm.value);
     this.addLeverancierForm.value["code"] = parseInt(this.addLeverancierForm.value["code"]);
     this.addLeverancierForm.value["bedrijfID"] = parseInt(this.addLeverancierForm.value["bedrijfID"]);
     this._adminService.addLeverancier(this.addLeverancierForm.value).subscribe();

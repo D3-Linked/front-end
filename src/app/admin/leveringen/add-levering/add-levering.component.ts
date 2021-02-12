@@ -22,6 +22,7 @@ export class AddLeveringComponent implements OnInit {
   selectedLaadkade: number;
   selectedLeverancier: number;
 
+  //Maak het formulier aan met de juiste validatie
   addLeveringForm = this.fb.group({
     omschrijving: ['', [Validators.required, Validators.minLength(2)]],
     laadkadeID: ['', Validators.required],
@@ -40,7 +41,7 @@ export class AddLeveringComponent implements OnInit {
     this.loadData();
   }
 
-  //haal de laadkades, schedules en leveranciers op voor de dropdown in het formulier
+  //haal de laadkades, schedules en leveranciers op voor de dropdowns in het formulier
   loadData() {
     this._adminService.getLaadkades().subscribe((result) => {
       this.laadkades = result;

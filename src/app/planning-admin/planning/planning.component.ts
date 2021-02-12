@@ -37,6 +37,7 @@ export class PlanningComponent implements OnInit {
   leveringAdded: boolean = false;
   productAdded: boolean = false;
 
+  //Maak het formulier aan met de juiste validatie
   addScheduleForm = this.fb.group({
     code: 0,
     datum: ['', Validators.required],
@@ -59,6 +60,7 @@ export class PlanningComponent implements OnInit {
   startDate: string;
   endDate: string;
 
+  //Maak het formulier aan met de juiste validatie
   addLeveringForm = this.fb.group({
     omschrijving: [''],
     laadkadeID: ['', Validators.required],
@@ -67,6 +69,7 @@ export class PlanningComponent implements OnInit {
     isCompleet: false,
   });
 
+  //Maak het formulier aan met de juiste validatie
   addProductForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
     leveringID: [''],
@@ -82,6 +85,7 @@ export class PlanningComponent implements OnInit {
     this.loadSchedules();
   }
 
+  //Haal alle schedules op uit de database binnen de gegeven date range om weer te geven op de overzichtspagina
   getSchedulesByDateRange() {
     this.startDate = this.datePipe.transform(
       new Date(this.fromDate),
@@ -101,18 +105,21 @@ export class PlanningComponent implements OnInit {
       });
   }
 
+  //Haal alle schedules op uit de database om weer te geven op de overzichtspagina
   loadSchedules() {
     this.planningService.getSchedules().subscribe((result) => {
       this.schedules = result;
     });
   }
 
+  //Haal alle producten van een bepaalde levering op uit de database om weer te geven op de overzichtspagina
   getProductenByLeveringID(id: number) {
     this.planningService.getProductenByLeveringId(id).subscribe((result) => {
       this.productenOfLevering = result;
     });
   }
 
+  //Ga naar de detail tab van een bepaalde schedule
   goToDetails(scheduleID: number) {
     this.planningService.getScheduleById(scheduleID).subscribe((result) => {
       this.selectedSchedule = result;
@@ -127,6 +134,7 @@ export class PlanningComponent implements OnInit {
     }, 300);
   }
 
+  //Navigeer terug naar de overzichtspagina
   backToAll(event) {
     if (event == 0) {
       this.selectedSchedule = null;
@@ -136,14 +144,18 @@ export class PlanningComponent implements OnInit {
     this.selectedTab = event;
   }
 
+  //Bekijk de producten van een bepaalde levering
   viewProducts(id: number) {
     this.getProductenByLeveringID(id);
   }
 
+  //Verberg alle producten
   hideProducts() {
     this.productenOfLevering = null;
   }
 
+  //Na submit van het formulier om een schedule toe te voegen
+  //Zet alle gegevens juist om en voeg de schedule toe
   onSubmit() {
     this.addScheduleForm.value['code'] = parseInt(
       this.addScheduleForm.value['code']
@@ -182,6 +194,8 @@ export class PlanningComponent implements OnInit {
     });
   }
 
+  //Na submit van het formulier om een levering toe te voegen
+  //Zet alle gegevens juist om en voeg de levering toe
   onLeveringSubmit() {
     this.addLeveringForm.value['laadkadeID'] = parseInt(
       this.addLeveringForm.value['laadkadeID']
@@ -203,6 +217,8 @@ export class PlanningComponent implements OnInit {
     this.leveringAdded = true;
   }
 
+  //Na submit van het formulier om een product toe te voegen
+  //Zet alle gegevens juist om en voeg de product toe
   onSubmitProduct() {
     this.addProductForm.value['leveringID'] = this.newLevering.leveringID;
 
@@ -215,11 +231,13 @@ export class PlanningComponent implements OnInit {
     this.addProductForm.reset();
   }
 
+  //Clear het levering form om terug niewe leveringen te kunnen toevoegen
   makeNewLevering() {
     this.addLeveringForm.reset();
     this.leveringAdded = false;
   }
 
+  //Als alles klaar is, terug naar de overzichtspagina
   scheduleReady() {
     this.selectedTab = 0;
   }

@@ -17,6 +17,7 @@ export class EditProductComponent implements OnInit {
 
   leveringen: Levering[];
 
+  //Maak het formulier aan met de juiste validatie
   editProductForm = this.fb.group({
     naam: ['', [Validators.required, Validators.minLength(2)]],
     leveringID: ['', Validators.required]
@@ -26,6 +27,7 @@ export class EditProductComponent implements OnInit {
   product: Product;
   levering: Levering;
 
+  //Haal de parameter id uit de url en zoek het bijbehorende product
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -34,6 +36,7 @@ export class EditProductComponent implements OnInit {
     });
   }
 
+  //haal het juiste product uit de database
   findProduct(){
     this._adminService.getProductById(this.id).subscribe(
       result => {
@@ -42,12 +45,14 @@ export class EditProductComponent implements OnInit {
     );
   }
 
+  //haal alle leveringen uit de database
   getLeveringen(){
     this._adminService.getLeveringen().subscribe(result => {
       this.leveringen = result;
     })
   }
 
+  //haal de juiste levering uit de database
   getLevering(id:number){
     this._adminService.getLeveringById(id).subscribe(result => {
       this.levering = result;
@@ -55,6 +60,8 @@ export class EditProductComponent implements OnInit {
     return this.levering;
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update het product in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this.product.levering = this.getLevering(this.product.leveringID);
     console.log(this.product);

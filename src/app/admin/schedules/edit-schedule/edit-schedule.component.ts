@@ -24,6 +24,7 @@ export class EditScheduleComponent implements OnInit {
 
   users: User[];
 
+  //Maak het formulier aan met de juiste validatie
   editScheduleForm = this.fb.group({
     code: 0,
     datum: ['', Validators.required],
@@ -36,6 +37,7 @@ export class EditScheduleComponent implements OnInit {
   schedule: Schedule;
   user: User;
 
+  //Haal de parameter id uit de url en zoek de bijbehorende schedule
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params['id'];
@@ -44,18 +46,21 @@ export class EditScheduleComponent implements OnInit {
     });
   }
 
+  //haal alle users uit de database
   getUsers() {
     this._adminService.getUsers().subscribe((result) => {
       this.users = result;
     });
   }
 
+  //haal de juiste schedule uit de database
   findSchedule() {
     this._adminService.getScheduleById(this.id).subscribe((result) => {
       this.schedule = result;
     });
   }
 
+  //haal de juiste user uit de database
   getUser(id:number){
     this._adminService.getUserById(id).subscribe(result => {
       this.user = result;
@@ -63,6 +68,8 @@ export class EditScheduleComponent implements OnInit {
     return this.user;
   }
 
+  //Als het bewerk formulier ingediend wordt
+  //Update de schedule in de database en ga terug naar de overzichtspagina
   onSubmit() {
     this.schedule.user = this.getUser(this.schedule.userID);
     this.schedule.code = parseInt(this.editScheduleForm.value["code"]);

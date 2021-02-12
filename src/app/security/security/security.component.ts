@@ -21,6 +21,7 @@ export class SecurityComponent implements OnInit {
   submitted: boolean = false;
   userLogin: UserLogin = new UserLogin('', '');
 
+  //Kijk na of de user misschien al ingelogd was
   ngOnInit(): void {
     if (this._authenticateService.isLoggedIn()) {
       this.router.navigateByUrl('/');
@@ -28,6 +29,7 @@ export class SecurityComponent implements OnInit {
     }
   }
 
+  //Methode om de snackbar te openen
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 4000,
@@ -36,6 +38,7 @@ export class SecurityComponent implements OnInit {
     });
   }
 
+  //Na submit van het loginform, voer authenticatie uit
   onSubmit() {
     this.submitted = true;
     this._authenticateService.authenticate(this.userLogin).subscribe(result => {

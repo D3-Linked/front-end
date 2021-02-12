@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  //mbv de observer in het oog houden of de schermbreedte verancerd
+  //mbv de observer in het oog houden of de schermbreedte veranderd
   //en afhankelijk hiervan het aantal kolommen zetten.
   ngOnInit(): void {
     this.breakpointObserver.observe([
