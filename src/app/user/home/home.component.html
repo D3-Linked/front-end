@@ -42,27 +42,27 @@
     </mat-grid-tile>
 
     <mat-grid-tile class="form">
-        <mat-card class="card">
-            <mat-card-title>Bekijk uw levering</mat-card-title>
-            <mat-card-subtitle>Vul hier uw nummerplaat en code in die u heeft gekregen</mat-card-subtitle>
+        <mat-card class="card" id="chauffeurCard">
+            <mat-card-title id="title">Bekijk uw levering</mat-card-title>
+            <mat-card-subtitle id="subtitle">Vul hier uw nummerplaat en code in die u heeft gekregen</mat-card-subtitle>
             <mat-card-content>
                 <form [formGroup]="findLeveringenForm">
                     <div>
                         <mat-form-field class="formfield">
                             <mat-label>Vul hier uw code in</mat-label>
-                            <input matInput placeholder="Ex. 1234" formControlName="code">
+                            <input id="input" matInput placeholder="Ex. 1234" formControlName="code">
                         </mat-form-field>
                         <control-messages [control]="findLeveringenForm.get('code')" class="errorMessage"></control-messages>
                     </div>
                     <div>
                         <mat-form-field class="formfield">
                             <mat-label>Vul hier uw nummerplaat in</mat-label>
-                            <input matInput placeholder="Ex. 1abc123" formControlName="nummerplaat">
+                            <input id="input" matInput placeholder="Ex. 1abc123" formControlName="nummerplaat">
                         </mat-form-field>
                         <control-messages [control]="findLeveringenForm.get('nummerplaat')" class="errorMessage"></control-messages>
                     </div>
                     <br>
-                    <button class="button" (click)="goTo()" mat-raised-button color="primary" type="submit">Zoek uw
+                    <button class="button" (click)="goTo()" mat-raised-button color="white" type="submit">Zoek uw
             levering
             op</button>
                 </form>

@@ -1,11 +1,3 @@
-#title {
-    font-size: 20px;
-    text-align: center;
-    background-color: royalblue;
-    color: whitesmoke;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
 #logo {
     padding-top: 20px;
     width: 75%;
@@ -14,6 +6,10 @@
 .card {
     height: 250px;
     margin: 20px;
+}
+
+#chauffeurCard {
+    background-color: royalblue;
 }
 
 .mat-card-title {
@@ -34,4 +30,12 @@
 
 .form {
     width: max-content;
+}
+
+#title,
+#subtitle,
+#input,
+ ::placeholder,
+mat-label {
+    color: white;
 }
