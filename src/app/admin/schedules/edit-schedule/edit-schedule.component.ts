@@ -77,6 +77,8 @@ export class EditScheduleComponent implements OnInit {
 
     //add one hour to the date (timezone conversion)
      this.schedule.datum = new Date(new Date(this.schedule.datum).setHours(new Date(this.schedule.datum).getHours() + 1));
+     this.schedule.datum = new Date(new Date(this.schedule.datum).setMilliseconds(0));
+
 
     this._adminService.updateSchedule(this.id, this.schedule).subscribe();
     this.route.navigate(['/schedules']);

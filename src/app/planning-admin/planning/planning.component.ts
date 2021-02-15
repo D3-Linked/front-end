@@ -177,6 +177,7 @@ export class PlanningComponent implements OnInit {
         new Date(this.addScheduleForm.value['datum']).getHours() + 1
       )
     );
+    this.addScheduleForm.value["datum"] = new Date(new Date(this.addScheduleForm.value["datum"]).setMilliseconds(0));
 
     this.planningService
       .addSchedule(this.addScheduleForm.value)

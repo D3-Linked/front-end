@@ -34,6 +34,7 @@ export class AddScheduleComponent implements OnInit {
 
     //add one hour to the date (timezone conversion)
     this.addScheduleForm.value["datum"] = new Date(new Date(this.addScheduleForm.value["datum"]).setHours(new Date(this.addScheduleForm.value["datum"]).getHours() + 1));
+    this.addScheduleForm.value["datum"] = new Date(new Date(this.addScheduleForm.value["datum"]).setMilliseconds(0));
 
     this._adminService.addSchedule(this.addScheduleForm.value).subscribe();
     this.route.navigate(['/schedules']);
