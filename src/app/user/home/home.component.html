@@ -5,7 +5,7 @@
 </mat-grid-list>
 <mat-grid-list cols="2" rowHeight="300px" width="2000px;">
     <mat-grid-tile>
-        <mat-card id="card">
+        <mat-card class="card">
             <mat-card-title>Onze socialmedia</mat-card-title>
             <mat-card-content>
                 Heb je interesse in wat wij doen of wil je meer weten over ons ? Volg ons dan gerust even op social media waar wij regelmatig de laatste nieuwtjes posten.
@@ -14,7 +14,7 @@
                 <a href="https://twitter.com/IAbdelmalki"><button mat-button>Twitter</button></a>
             </mat-card-actions>
         </mat-card>
-        <mat-card id="card">
+        <mat-card class="card">
             <mat-card-title>Onze richtlijnen</mat-card-title>
             <mat-card-content>
                 Als Linked staan wij in voor een veilige en betrouwbaare service. Bij ons kan je rekenen op kwaliteit. Wij vinden een goede service zeer belangrijk dus bij problemen staan wij steeds klaar om deze zo snel mogelijk op te lossen.
@@ -22,7 +22,7 @@
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
-        <mat-card id="card">
+        <mat-card class="card">
             <mat-card-title>Hoe bekijk ik mijn levering</mat-card-title>
             <mat-card-content>
                 Alle details over je levering bekijken ? Dit kan vanaf nu heel simpel met je leveringscode. Hier leggen we stap voor stap uit hoe je dit doet! hieronder zie je een vakje met 'Bekijk u levering' klik hier op 'Klik hier' en vul de correcte leveringscode
@@ -32,7 +32,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-        <mat-card id="card">
+        <mat-card class="card">
             <mat-card-title>Wat doet linked</mat-card-title>
             <mat-card-content>
                 Wat doen wij ? Wij als linked bieden een alround IT service voor logistieke bedrijven. Wij bieden een kant en klaar systeem aan dat het laden en lossen van goederen vergemakkelijkt en versneld op basis van nummerplaatherkenning en een automatische planning.
@@ -41,37 +41,32 @@
         </mat-card>
     </mat-grid-tile>
 
-    <mat-grid-tile>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="min-width: 70%; min-height: 50px; background-color: #536dfe;">
-            <mat-expansion-panel-header>
-                <mat-panel-title style="color: white;">
-                    <u> BEKIJK UW LEVERING </u>
-                </mat-panel-title>
-                <mat-panel-description style="color: white;">
-                    {{panelOpenState ? 'Vul hier uw code in die u heeft gekregen.' : 'KLIK HIER'}}
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <form [formGroup]="findLeveringenForm">
-                <div>
-                    <mat-form-field>
-                        <mat-label style="color: white;">Vul hier uw code in</mat-label>
-                        <input style="color: white;" matInput placeholder="Ex. 1234" formControlName="code">
-                    </mat-form-field>
-                    <control-messages [control]="findLeveringenForm.get('code')" class="errorMessage"></control-messages>
-                </div>
-                <div>
-                    <mat-form-field>
-                        <mat-label style="color: white;">Vul hier uw nummerplaat in</mat-label>
-                        <input style="color: white;" matInput placeholder="Ex. 1abc123" formControlName="nummerplaat">
-                    </mat-form-field>
-                    <control-messages [control]="findLeveringenForm.get('nummerplaat')" class="errorMessage"></control-messages>
-                </div>
-                <br>
-                <button class="button" (click)="goTo()" mat-raised-button color="white" type="submit">Zoek uw
-          levering
-          op</button>
-            </form>
-        </mat-expansion-panel>
+    <mat-grid-tile class="form">
+        <mat-card class="card">
+            <mat-card-title>Bekijk uw levering</mat-card-title>
+            <mat-card-subtitle>Vul hier uw nummerplaat en code in die u heeft gekregen</mat-card-subtitle>
+            <mat-card-content>
+                <form [formGroup]="findLeveringenForm">
+                    <div>
+                        <mat-form-field class="formfield">
+                            <mat-label>Vul hier uw code in</mat-label>
+                            <input matInput placeholder="Ex. 1234" formControlName="code">
+                        </mat-form-field>
+                        <control-messages [control]="findLeveringenForm.get('code')" class="errorMessage"></control-messages>
+                    </div>
+                    <div>
+                        <mat-form-field class="formfield">
+                            <mat-label>Vul hier uw nummerplaat in</mat-label>
+                            <input matInput placeholder="Ex. 1abc123" formControlName="nummerplaat">
+                        </mat-form-field>
+                        <control-messages [control]="findLeveringenForm.get('nummerplaat')" class="errorMessage"></control-messages>
+                    </div>
+                    <br>
+                    <button class="button" (click)="goTo()" mat-raised-button color="primary" type="submit">Zoek uw
+            levering
+            op</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
     </mat-grid-tile>
-
 </mat-grid-list>
