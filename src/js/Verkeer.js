@@ -10,10 +10,10 @@
 connect();
 
 async function connect() {
-    const urlQlikServer = "https://r0737681.eu.qlikcloud.com";
+    const urlQlikServer = "https://me495a0w5nevk6x.eu.qlikcloud.com/";
     const urlLoggedIn = "/api/v1/audits";//Use GET request to see if you are authenticated
     const urlLogin = "/login";
-    const webIntegrationId = 'BlUqX2Qo2klBoQbuCkbpxheYH4wFswGY';
+    const webIntegrationId = 'EaIz2vSpoK_FcsAY_fhlE8j8iBmCsHpo';
 
     //Check to see if logged in
     return await fetch(`${urlQlikServer}${urlLoggedIn}`, {
@@ -39,11 +39,11 @@ async function connect() {
 }
 
 var config1 = {
-    host: "r0737681.eu.qlikcloud.com", //the address of your Qlik Engine Instance
+    host: "me495a0w5nevk6x.eu.qlikcloud.com", //the address of your Qlik Engine Instance
     prefix: "/", //or the virtual proxy to be used. for example "/anonymous/"
     port: 443, //or the port to be used if different from the default port
     isSecure: true, //should be true if connecting over HTTPS
-    webIntegrationId: 'BlUqX2Qo2klBoQbuCkbpxheYH4wFswGY' //only needed in SaaS editions and QSEoK
+    webIntegrationId: 'EaIz2vSpoK_FcsAY_fhlE8j8iBmCsHpo' //only needed in SaaS editions and QSEoK
 };
 
 require.config( {
@@ -62,7 +62,7 @@ require( ["js/qlik"], function ( qlik ) {
 	} );
 
 	//open apps -- inserted here --
-	var app = qlik.openApp("6130a3fe-31d1-4991-be09-2c74dced71f8", config1);
+	var app = qlik.openApp("96453821-b555-4e6d-a8e5-1b1ec2938088", config1);
 	//grafiek besmetingen/dooden in een land
 	app.getObject('vooruitgang', 'RLsbpZ');
     //grafiek hoeveel ziekenhuis bedden per 1.000.000 inwooners
