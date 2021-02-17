@@ -16,7 +16,6 @@ export class ControlMessages {
   //controlleerd welke validate er op deze control is ingesteld en haalt via de validationService de juiste message op
   get errorMessage() {
     for (let propertyName in this.control.errors) {
-      console.log(propertyName);
       if (
         this.control.errors.hasOwnProperty(propertyName) &&
         this.control.touched

@@ -177,7 +177,9 @@ export class PlanningComponent implements OnInit {
         new Date(this.addScheduleForm.value['datum']).getHours() + 1
       )
     );
-    this.addScheduleForm.value["datum"] = new Date(new Date(this.addScheduleForm.value["datum"]).setMilliseconds(0));
+    this.addScheduleForm.value['datum'] = new Date(
+      new Date(this.addScheduleForm.value['datum']).setMilliseconds(0)
+    );
 
     this.planningService
       .addSchedule(this.addScheduleForm.value)
@@ -210,9 +212,12 @@ export class PlanningComponent implements OnInit {
       this.addLeveringForm.value['omschrijving'] = 'Geen omschrijving gegeven';
     }
 
+    this.addLeveringForm.value['isCompleet'] = false;
+
     this.planningService
       .addLevering(this.addLeveringForm.value)
       .subscribe((result) => {
+        console.log(result);
         this.newLevering = result;
       });
     this.leveringAdded = true;

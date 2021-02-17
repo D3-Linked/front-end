@@ -90,8 +90,8 @@
                   PRODUCTEN</button>
                                 <button (click)="hideProducts()" class="EditButton" *ngIf="productenOfLevering != null" mat-stroked-button color="accent">VERBERG
                   PRODUCTEN</button>
-                                <div id="productCardContainer">
-                                    <mat-card *ngFor="let product of productenOfLevering" class="productCard">
+                                <div id="productCardContainer" *ngFor="let product of productenOfLevering">
+                                    <mat-card class="productCard" *ngIf="product.leveringID == levering.leveringID">
                                         <mat-card-content>
                                             <div>{{product.naam}}</div>
                                         </mat-card-content>
