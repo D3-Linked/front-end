@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  //SiteURL gebruiken in het publish gedeelte van het backendproject
   baseUrl: 'https://backendappproject4.azurewebsites.net/api/'
 };
 
